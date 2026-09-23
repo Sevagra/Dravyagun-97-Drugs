@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAVYAGUN VIGYAN - 97 DRUGS Database & Syllabus Analysis</title>
+
+    <meta name="theme-color" content="#065f46">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dravyaguna 97">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/620/620851.png">
+
+    <!-- Embedded Web App Manifest for Web/Mobile Installation -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"Dravyaguna Vigyan 97 Drugs","short_name":"Dravyaguna97","start_url":".","display":"standalone","background_color":"#065f46","theme_color":"#065f46","description":"NCISM BAMS 2nd Prof Dravyaguna Master Database","icons":[{"src":"https://cdn-icons-png.flaticon.com/512/620/620851.png","sizes":"512x512","type":"image/png"}]}'>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Cinzel', serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .sanskrit-font { font-family: 'Inter', serif; font-style: italic; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Main Header -->
+    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2.5 bg-emerald-700 rounded-xl shadow-inner border border-emerald-600 flex-shrink-0">
+                        <i class="fa-solid fa-leaf text-2xl text-emerald-300"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold heading-font tracking-wide">DRAVYAGUN VIGYAN - 97 DRUGS</h1>
+                        <p class="text-xs sm:text-sm text-emerald-200">NCISM 2nd Professional BAMS (AyUG-DG) • Master Drug Reference & Syllabus Explorer</p>
+                        <!-- Author & Contributor Ribbon Credit -->
+                        <div class="mt-1 text-[11px] sm:text-xs text-amber-300/95 font-medium flex items-center gap-1.5 flex-wrap">
+                            <i class="fa-solid fa-user-doctor text-amber-400"></i>
+                            <span>By Dr. Sevagra Shivaji Sharma, Dept. of Dravyaguna Vigyan, Dr. Deepak Patil Ayurvedic Medical College, Borpadale, Kolhapur. &amp; with Gemini.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats & Action Buttons -->
+                <div class="flex items-center space-x-2 text-xs sm:text-sm flex-shrink-0">
+                    <button id="installAppBtn" onclick="handleInstallClick()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-lg transition shadow flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Install App</span>
+                    </button>
+                    <button onclick="openPrivacyModal()" class="px-3 py-1.5 bg-emerald-900/80 hover:bg-emerald-900 rounded-lg border border-emerald-700/60 text-emerald-100 flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                        <span>Privacy &amp; Copyright</span>
+                    </button>
+                    <span class="px-3 py-1.5 bg-emerald-900/60 rounded-lg border border-emerald-700/50 hidden lg:flex items-center gap-1.5">
+                        <i class="fa-solid fa-book-medical text-amber-400"></i>
+                        <span>97+ Herbal Drugs</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <div class="flex overflow-x-auto space-x-2 mt-4 pt-2 border-t border-emerald-700/60 custom-scrollbar">
+    <!-- Modal for Step-by-Step Installation Guidance -->
+    <div id="installModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <div class="p-5 bg-amber-500 text-slate-900 flex items-center justify-between sticky top-0 z-10">
+                <h3 class="text-base font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    How to Install Dravyaguna 97 App
+                </h3>
+                <button onclick="closeInstallModal()" class="text-slate-800 hover:text-black text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-slate-800 flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5"></i>
+                    <div>
+                        <strong class="font-semibold block">Note on Web Installation:</strong>
+                        To install this web app as a standalone application on your home screen or desktop, host this webpage on an <strong>HTTPS</strong> web server (like GitHub Pages or Netlify).
+                    </div>
+                </div>
+
+                <!-- Android / Chrome -->
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-brands fa-android text-emerald-600 text-base"></i>
+                        Android (Google Chrome / Edge)
+                    </h4>
+                    <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-600">
+                        <li>Tap the <strong>three dots menu (<i class="fa-solid fa-ellipsis-vertical"></i>)</strong> in the top-right corner of Chrome.</li>
+                        <li>Select <strong>"Add to Home screen"</strong> or <strong>"Install app"</strong>.</li>
+                        <li>Confirm by tapping <strong>Install</strong>.</li>
+                    </ol>
+                </div>
+
+                <!-- iOS / Safari -->
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-brands fa-apple text-slate-800 text-base"></i>
+                        iPhone / iPad (Safari Browser)
+                    </h4>
+                    <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-600">
+                        <li>Open this link in <strong>Safari</strong> browser.</li>
+                        <li>Tap the <strong>Share button (<i class="fa-solid fa-share-nodes text-blue-600"></i>)</strong> at the bottom bar.</li>
+                        <li>Scroll down and tap <strong>"Add to Home Screen"</strong>.</li>
+                        <li>Tap <strong>Add</strong> in the top-right corner.</li>
+                    </ol>
+                </div>
+
+                <!-- Desktop / Laptop -->
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-desktop text-sky-600 text-base"></i>
+                        PC / Mac / Windows (Chrome / Edge)
+                    </h4>
+                    <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-600">
+                        <li>Look for the <strong>Install icon (<i class="fa-solid fa-download"></i>)</strong> in your browser's address bar at the top right.</li>
+                        <li>Click <strong>Install</strong> to add the app directly to your computer desktop or start menu.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end p-4 border-t bg-slate-50 rounded-b-2xl">
+                <button onclick="closeInstallModal()" class="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition font-medium text-xs">
+                    Got It!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Privacy Policy & Copyright Protection Notice -->
+    <div id="privacyModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <div class="p-5 bg-emerald-800 text-white flex items-center justify-between sticky top-0 z-10">
+                <h3 class="text-base font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-300"></i>
+                    Copyright Protection &amp; Privacy Policy
+                </h3>
+                <button onclick="closePrivacyModal()" class="text-slate-300 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <!-- Copyright Section -->
+                <div class="p-4 bg-amber-50/80 rounded-xl border border-amber-200/80 space-y-2">
+                    <h4 class="font-bold text-amber-900 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-copyright text-amber-600"></i>
+                        Copyright &amp; Intellectual Property Notice
+                    </h4>
+                    <p class="text-slate-800">
+                        <strong>&copy; 2026 Dr. Sevagra Shivaji Sharma &amp; Department of Dravyaguna Vigyan</strong>, Dr. Deepak Patil Ayurvedic Medical College, Borpadale, Kolhapur. All Rights Reserved.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600 text-xs">
+                        <li><strong>Database Compilation &amp; Structure:</strong> The systematic compilation, formatting, UI design, interactive features, and digital database architecture are original intellectual property.</li>
+                        <li><strong>Classical Texts Attribution:</strong> Classical Sanskrit Shlokas and terms are referenced from public domain literature including <em>Bhavprakasha Nighantu</em>, <em>Brihattrayi</em>, and NCISM AyUG-DG syllabus guidelines.</li>
+                        <li><strong>Authorized Use:</strong> Educational and clinical reference use for BAMS students, faculty, and Ayurvedic practitioners is encouraged. Commercial redistribution or unauthorized re-branding without credit is strictly prohibited.</li>
+                    </ul>
+                </div>
+
+                <!-- Privacy Section -->
+                <div class="p-4 bg-emerald-50/80 rounded-xl border border-emerald-200/80 space-y-2">
+                    <h4 class="font-bold text-emerald-900 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-user-shield text-emerald-600"></i>
+                        100% Offline Data Privacy Policy
+                    </h4>
+                    <p class="text-slate-800">
+                        This application operates with complete client-side privacy protection:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600 text-xs">
+                        <li><strong>Zero Data Collection:</strong> No user data, searches, edits, or analytics are transmitted to external servers.</li>
+                        <li><strong>Local Browser Storage:</strong> All modifications made via the "Edit" feature are saved locally inside your browser's private storage (localStorage).</li>
+                        <li><strong>Offline Functionality:</strong> Once installed as a PWA, the app operates completely offline without requiring an active internet connection.</li>
+                    </ul>
+                </div>
+
+                <!-- App Installation Guidance -->
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2 text-xs">
+                    <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-mobile-screen-button text-emerald-600"></i>
+                        How to Install on Devices
+                    </h4>
+                    <p class="text-slate-600">
+                        <strong>Android / Chrome / Windows / Mac:</strong> Click the <span class="px-2 py-0.5 bg-amber-500 text-slate-900 font-bold rounded text-[10px]">Install App</span> button in the top menu or select <em>"Add to Home Screen" / "Install App"</em> from your browser menu.<br>
+                        <strong>iOS / Safari:</strong> Tap the <i class="fa-solid fa-share-nodes text-blue-600"></i> <em>Share</em> button in Safari and select <em>"Add to Home Screen"</em>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end p-4 border-t bg-slate-50 rounded-b-2xl">
+                <button onclick="closePrivacyModal()" class="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition font-medium text-xs">
+                    I Understand &amp; Agree
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none text-xs sm:text-sm">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <script>
+        const drugsData = [
+            { id: 1, name: "Agnimantha", synonyms: "श्रीपर्ण, गणिकारिका, जय, वैजयन्ती", botanical: "Premna mucronata Roxb.", family: "Verbenaceae / Lamiaceae", category: "MK", part: "Root Bark", guna: "Laghu, Ruksha", rasa: "Tikta, Katu, Kashaya, Madhura", virya: "Ushna", vipaka: "Katu", prabhava: "Shothahara", doshaghnata: "Kaphavatahara", karma: "Shothahara, Vedanasthapana, Anulomana", formulations: "Dashamularishta, Agnimanthadi Kwath", shloka: "अग्निमन्थः शोफहरः श्लेष्मघ्नो वातनाशनः। दीपनः कटुकस्तिक्तो मधुरः कफवातहृत्॥" },
+            { id: 2, name: "Ahiphena", synonyms: "खसतिल, अफीम, नागफेन, खसफलक्षोर", botanical: "Papaver somniferum L.", family: "Papaveraceae", category: "NK", part: "Exudate (Opium)", guna: "Ruksha, Sukshma, Vyavayi", rasa: "Tikta, Kashaya", virya: "Ushna", vipaka: "Katu", prabhava: "Madakari", doshaghnata: "Kaphahara", karma: "Madakari, Vedanasthapana, Stambhana", formulations: "Ahiphenasava, Nidrodaya Rasa", shloka: "आहिफेन शोषि ग्राहि मोहकारि मदप्रदम्। कफघ्नं वातपित्तघ्नं निद्राजननमुत्तमम्॥" },
+            { id: 3, name: "Ajamoda", synonyms: "उग्रगन्धा, कारवी, मयूर, दीप्यक", botanical: "Trachyspermum roxburghianum", family: "Apiaceae", category: "DK", part: "Fruit", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Shoolahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Anulomana, Shoolahara", formulations: "Ajamodadi Churna", shloka: "अजमोदा कटुस्तीक्ष्णा दीपनी शूलनाशिनी। क्रिमिहृद्वह्निजननी कफवातविनाशिनी॥" },
+            { id: 4, name: "Amalaki", synonyms: "धात्री, अमृता, वयस्था, शिवा, तिष्यफला", botanical: "Emblica officinalis Gaertn.", family: "Euphorbiaceae", category: "MK", part: "Fruit", guna: "Guru, Ruksha, Sheeta", rasa: "Pancharasa (Amla Pradhana)", virya: "Sheeta", vipaka: "Madhura", prabhava: "Rasayana", doshaghnata: "Tridoshara (Esp. Pittahara)", karma: "Rasayana, Tridoshara, Vayasthapana", formulations: "Chyawanprash, Triphala Churna", shloka: "धात्रीफलं स्वादु सुशीतलं सरं त्रिदोषहृत् पाण्डुकफप्रमेहजित्। वयःस्थापनं वृष्यं चक्षुष्यं सर्वदोषहृत्॥" },
+            { id: 5, name: "Apamarga", synonyms: "शिखरी, अधःशल्य, मयूरक, प्रत्यक्पुष्पी", botanical: "Achyranthes aspera L.", family: "Amaranthaceae", category: "DK", part: "Whole Plant", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Shirovirechana", doshaghnata: "Kaphavatahara", karma: "Shirovirechana, Chedana, Kshara-karma", formulations: "Apamarga Kshara, Apamargakshara Taila", shloka: "अपामार्गः सरस्तीक्ष्णो दीपः कफवातानुलोमनः। निहन्ति हृद्रुग्गुल्मार्शः कण्डूशूलउदरापहा॥" },
+            { id: 6, name: "Aragwadha", synonyms: "राजवृक्ष, शम्प्याक, चतुरङ्गुल, कृतमाल", botanical: "Cassia fistula L.", family: "Fabaceae", category: "MK", part: "Fruit Pulp", guna: "Guru, Snigdha, Sheeta", rasa: "Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Mridu Virechana", doshaghnata: "Kaphapittahara", karma: "Mridu Virechana, Kushtaghna, Kaphapittahara", formulations: "Aragwadhadi Kwath, Aragwadhalehya", shloka: "आरग्वधो मधुरः शीतः स्रंसनो दोपहृद्गुरुः। ज्वरहृद्रोगपित्तास्रवातोदावर्त्तनाशनः॥" },
+            { id: 7, name: "Arjuna", synonyms: "ककुभ, धन्वी, इन्द्रद्रु, वीरवृक्ष", botanical: "Terminalia arjuna (Roxb.) Wight & Arn.", family: "Combretaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Hridya", doshaghnata: "Kaphapittahara", karma: "Hridya, Sandhananiya, Raktastambhana", formulations: "Arjunarishta, Arjunaghrita", shloka: "अर्जुनः कषायो मधुरः शीतलो ह्रद्य एव च। क्षतक्षयहरः सरः कफपित्तहरो लघुः॥" },
+            { id: 8, name: "Ashoka", synonyms: "हेमपुष्प, ताम्रपल्लव, विशोक, पिण्डी", botanical: "Saraca asoca (Roxb.) De Wilde", family: "Fabaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Asrigdarahara", doshaghnata: "Kaphapittahara", karma: "Asrigdarahara, Stambhana, Hridya", formulations: "Ashokarishta, Ashokaghrita", shloka: "अशोकः शीतलस्तिक्तो ग्राही तृड्दाहनाशनः। हृद्यो दोषासृग्गुल्मार्शोविषशूलविनाशनः॥" },
+            { id: 9, name: "Ashwagandha", synonyms: "हयगन्धा, वाजिनामधेया, वरदा, बलदा", botanical: "Withania somnifera (L.) Dunal", family: "Solanaceae", category: "MK", part: "Root", guna: "Laghu, Snigdha", rasa: "Tikta, Kashaya, Madhura", virya: "Ushna", vipaka: "Madhura", prabhava: "Balya / Rasayana", doshaghnata: "Kaphavatahara", karma: "Balya, Rasayana, Vajikarana, Nidrajanana", formulations: "Ashwagandharishta, Ashwagandha Churna", shloka: "अश्वगन्धा अनिलश्लेष्मश्वित्रशोथक्षयापहा। बल्या रसायनी तिक्ता कषायोष्णा अतिशुक्रला॥" },
+            { id: 10, name: "Asthishrunkhala", synonyms: "अस्थिसंहारक, वज्रवल्ली, चतुर्धारा", botanical: "Cissus quadrangularis L.", family: "Vitaceae", category: "MK", part: "Stem", guna: "Laghu, Ruksha", rasa: "Madhura, Katu", virya: "Ushna", vipaka: "Madhura", prabhava: "Asthisandhanakara", doshaghnata: "Kaphavatahara", karma: "Asthisandhanakara, Dipana, Vatahara", formulations: "Lakshadi Guggulu, Swarasa", shloka: "अस्थिसंहारकः प्रोक्तो वातश्लेष्महरो लघुः। अस्थ्यस्थिसन्धानकरो दीपनः कृमिनाशनः॥" },
+            { id: 11, name: "Atibala", synonyms: "कङ्कतिका, ऋष्यप्रोक्ता, कङ्कती", botanical: "Abutilon indicum (L.) Sweet", family: "Malvaceae", category: "MK", part: "Root, Seed", guna: "Snigdha, Pichhila", rasa: "Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Brmhana", doshaghnata: "Vatapittahara", karma: "Balya, Brmhana, Vatahara", formulations: "Balatyadi Kwath", shloka: "अतिबला मधुरा शीता स्निग्धा बलपुष्टिकरी सरा। पित्तदाहहरि कासश्वासहृद्वतजिन्मता॥" },
+            { id: 12, name: "Ativisha", synonyms: "भङ्गुरा, विषघ्नी, शुक्लकन्दा, अरुणा", botanical: "Aconitum heterophyllum Wall.", family: "Ranunculaceae", category: "MK", part: "Tuberous Root", guna: "Laghu, Ruksha", rasa: "Tikta, Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Deepana / Amashoshana", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Amashoshana, Atisaraghna", formulations: "Balachaturbhadra Churna", shloka: "अतिविषा दीपनी वृष्या कफपित्तातिसारहृत्। विषविषमज्वरघ्नी च कासश्वासविनाशिनी॥" },
+            { id: 13, name: "Babbula", synonyms: "कीनाश, कण्ठकी, युग्मकण्ट", botanical: "Acacia nilotica (L.) Delile", family: "Fabaceae", category: "MK", part: "Bark, Gum", guna: "Guru, Ruksha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Stambhana", doshaghnata: "Kaphapittahara", karma: "Stambhana, Raktapittahara, Dantadhavana", formulations: "Babbularishta", shloka: "बब्बूलः कफपित्तघ्नः कषायः स्तम्भनो गुरुः। कफकासातिसारघ्नो व्रणरोपणकारकः॥" },
+            { id: 14, name: "Bakuchi", synonyms: "सोमराजी, कुष्ठघ्नी, शशङ्कलेखा, अवल्गुजा", botanical: "Psoralea corylifolia L.", family: "Fabaceae", category: "MK", part: "Seed", guna: "Ruksha, Tikshna", rasa: "Tikta, Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Switrahara", doshaghnata: "Kaphavatahara", karma: "Kushtaghna, Switrahara, Twagdosahara", formulations: "Bakuchi Taila, Avalgujadi Lepa", shloka: "बाकुची मधुरा तिक्ता कटुका कुष्ठनाशिनी। श्वित्रशोथकफघ्नी च हृद्या रसायनवरः॥" },
+            { id: 15, name: "Bakula", synonyms: "केशर, सिंहकेशर, मद्यगन्ध, चिरपुष्प", botanical: "Mimusops elengi L.", family: "Sapotaceae", category: "MK", part: "Bark, Flower, Fruit", guna: "Guru, Snigdha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Dantdardhyakara", doshaghnata: "Kaphapittahara", karma: "Dantdardhyakara, Stambhana", formulations: "Bakuladi Churna", shloka: "बकुलः मधुरः स्निग्धः कषायो दन्तढार्ढ्यकृत्। कफपित्तहरो हृद्यः विशदो मत्तगन्धकः॥" },
+            { id: 16, name: "Bala", synonyms: "वाट्यालिका, भद्रौदनी, भद्रबला", botanical: "Sida cordifolia L.", family: "Malvaceae", category: "MK", part: "Root", guna: "Snigdha, Pichhila", rasa: "Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Balya / Rasayana", doshaghnata: "Vatapittahara", karma: "Balya, Vatahara, Brmhana, Rasayana", formulations: "Balarishta, Ksheerabala Taila", shloka: "बला मधुरा शीता स्निग्धा बलवर्धनी। क्षतक्षयहरा वृष्या वातपित्तविनाशिनी॥" },
+            { id: 17, name: "Beejaka", synonyms: "आसन, बन्धूकपुष्प, प्रियक, महासर्प", botanical: "Pterocarpus marsupium Roxb.", family: "Fabaceae", category: "MK", part: "Heartwood", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Pramehahara", doshaghnata: "Kaphapittahara", karma: "Pramehahara, Rasayana, Rasayanakara", formulations: "Asanadi Kwath, Beejakasara", shloka: "बीजकः कफपित्तघ्नः प्रमेहकुष्ठनाशनः। केश्यस्त्वच्यः कषायश्च रसायणवरो मतः॥" },
+            { id: 18, name: "Bhallataka", synonyms: "अरुष्कर, अग्निमुख, तपन, शोफकृत", botanical: "Semecarpus anacardium L.f.", family: "Anacardiaceae", category: "MK", part: "Fruit Nut", guna: "Laghu, Tikshna, Snigdha", rasa: "Katu, Tikta, Madhura", virya: "Ushna", vipaka: "Madhura", prabhava: "Chedana", doshaghnata: "Kaphavatahara", karma: "Chedana, Deepana, Vata Kaphahara, Rasayana", formulations: "Sanjivani Vati, Bhallataka Rasayana", shloka: "भल्लातकः स्वादुपाकः कफवातहरो लघुः। कषायोदीपनो वृष्यो व्रणगुल्मार्शसाम् जयेत्॥" },
+            { id: 19, name: "Bharangi", synonyms: "ब्राह्मणयष्टिका, अङ्गारवल्ली, खर्वरस", botanical: "Clerodendrum serratum (L.) Moon", family: "Lamiaceae", category: "MK", part: "Root", guna: "Laghu, Ruksha", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Kasashwasahara", doshaghnata: "Kaphavatahara", karma: "Kasahara, Shwasahara, Kaphatahara", formulations: "Bharangyadi Kwath, Kanakasava", shloka: "भारङ्गी कटुका तिक्ता रोचनी कासश्वासहृत्। गुल्मशोथज्वरहरा कफवातविनाशिनी॥" },
+            { id: 20, name: "Bhrungaraja", synonyms: "मार्कव, भृङ्ग, अङ्गारक, केशराज", botanical: "Eclipta alba (L.) Hassk.", family: "Asteraceae", category: "MK", part: "Whole Plant", guna: "Laghu, Ruksha", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Keshya", doshaghnata: "Kaphavatahara", karma: "Keshya, Rasayana, Yakrit-uttejaka", formulations: "Bhringraja Taila, Bhringrajasava", shloka: "भृङ्गराजः कटुस्तिक्तो रसायनवरः केशः। कफवातहरो दन्त्यः शिरोरुक्पाण्डुनाशनः॥" },
+            { id: 21, name: "Bhumyamalaki", synonyms: "तामली, बहुपत्रा, भूधात्री, शिविका", botanical: "Phyllanthus niruri L.", family: "Phyllanthaceae", category: "MK", part: "Whole Plant", guna: "Laghu, Ruksha", rasa: "Tikta, Kashaya, Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Kamalahara", doshaghnata: "Kaphapittahara", karma: "Kamalahara, Yakrit-rakshaka, Pittahara", formulations: "Bhumyamalaki Swarasa", shloka: "भूभ्यामलकी तिक्ता कषायला शामयति पित्तम्। कामलापाण्डुमेहादीन् हरत्येव न संशयः॥" },
+            { id: 22, name: "Bilva", synonyms: "शाण्डिल्य, मालूर, श्रीफल, सदाफल", botanical: "Aegle marmelos (L.) Correa", family: "Rutaceae", category: "MK", part: "Fruit, Bark", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Grahi", doshaghnata: "Kaphavatahara", karma: "Sangrahi, Deepana, Pachana, Vatahara", formulations: "Bilwadi Lehya, Dashamularishta", shloka: "बिल्वं तु बामं दीपनं ग्राहि वातकफपहम्। पाकी तिक्ता कषायोष्णं सङ्ग्राही दीपनं परम्॥" },
+            { id: 23, name: "Brahmi", synonyms: "सरस्वती, कपोतवेगा, सौम्या, सुरेष्टा", botanical: "Bacopa monnieri (L.) Wettst.", family: "Scrophulariaceae", category: "MK", part: "Whole Plant", guna: "Laghu, Sara", rasa: "Tikta, Kashaya", virya: "Sheeta", vipaka: "Madhura", prabhava: "Medhya", doshaghnata: "Tridoshara", karma: "Medhya, Rasayana, Unmadahara", formulations: "Brahmi Ghrita, Brahmi Vati", shloka: "ब्राह्मी आयुष्या मेध्या स्वरारोग्यकरी सरा। आयुःप्रज्ञा मतिप्रदा अनिलापहारी च॥" },
+            { id: 24, name: "Bruhati", synonyms: "महती, सिंही, क्षुद्रा, कण्टकिनी", botanical: "Solanum indicum L.", family: "Solanaceae", category: "MK", part: "Root, Fruit", guna: "Laghu, Ruksha", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Deepana / Shwasahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Kanthya, Shwasahara", formulations: "Bruhatyadi Kwath, Dashamula", shloka: "बृहती ग्राहिणी हृद्या पाचिनी कफवातहृत्। कटुका तिक्तका चोष्णा कासश्वासहरा मता॥" },
+            { id: 25, name: "Chakramarda", synonyms: "प्रपुन्नाड, एडगज, दद्रुघ्न, मेषलोचन", botanical: "Cassia tora L.", family: "Fabaceae", category: "MK", part: "Seed, Leaf", guna: "Laghu, Ruksha", rasa: "Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Dadrughna", doshaghnata: "Kaphavatahara", karma: "Dadrughna, Kushtaghna, Krimighna", formulations: "Dadrughna Lepa, Chakramardadi Taila", shloka: "चक्रमर्दः कटुरुष्णो दद्रुकुष्ठविनाशनः। कण्डूकृमिहरो हृद्यः कासश्वासकफापहः॥" },
+            { id: 26, name: "Chandana", synonyms: "श्रीखण्ड, भद्रश्री, गन्धसार, मलयज", botanical: "Santalum album L.", family: "Santalaceae", category: "MK", part: "Heartwood", guna: "Laghu, Ruksha", rasa: "Tikta, Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Dahaprashamana", doshaghnata: "Kaphapittahara", karma: "Dahaprashamana, Pittahara, Vishaghna", formulations: "Chandanasava, Chandanadi Churna", shloka: "चन्दनं शीतलं तिक्तं चाह्लादनकरं परम्। दाहतृष्णाविषघ्नं च पित्तघ्नं सर्वदोषहृत्॥" },
+            { id: 27, name: "Chitraka", synonyms: "वह्नि, अनल, पावक, शिखी, दीप्य", botanical: "Plumbago zeylanica L.", family: "Plumbaginaceae", category: "MK", part: "Root Bark", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Deepana (Agni-sama)", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Shothahara, Arshoghna", formulations: "Chitrakadi Vati, Chitrak Haritaki", shloka: "चित्रको वह्निसमः पाके कटुकः शोथअर्शसाम्। ग्राह्यग्निदीपनो रूक्षो वातश्लेष्मापहः सरः॥" },
+            { id: 28, name: "Dadima", synonyms: "दाडिम, दन्तबीज, लोहितपुष्पक, करक", botanical: "Punica granatum L.", family: "Lythraceae", category: "MK", part: "Fruit Rind", guna: "Laghu, Snigdha", rasa: "Madhura, Amla, Kashaya", virya: "Anushnasheeta", vipaka: "Madhura", prabhava: "Hridya / Grahi", doshaghnata: "Tridoshara", karma: "Hridya, Deepana, Grahi, Raktapittahara", formulations: "Dadimashtaka Churna, Dadimadi Ghrita", shloka: "दाडिमं स्वादु तृड्दाहज्वरहाद्यं कफपित्तहृत्। हृद्यं ग्राहि लघु स्निग्धं दीपनं पाचनं परम्॥" },
+            { id: 29, name: "Dhamasa", synonyms: "दुरालभा, धन्वयास, समुद्रान्ता, सूक्ष्मपत्रा", botanical: "Fagonia cretica L.", family: "Zygophyllaceae", category: "MK", part: "Whole Plant", guna: "Laghu, Snigdha", rasa: "Tikta, Kashaya, Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Dahaprashamana", doshaghnata: "Kaphapittahara", karma: "Pittahara, Dahaprashamana, Jwarahara", formulations: "Duralabhadi Kwath", shloka: "धमासो मथुरः शीतः पित्तदाहज्वरापहः। कषायः कटु पाके च कफपित्तविनाशनः॥" },
+            { id: 30, name: "Dhanyaka", synonyms: "छत्रा, कुस्तुम्बुरु, वेधक, सूक्ष्मपत्र", botanical: "Coriandrum sativum L.", family: "Apiaceae", category: "MK", part: "Fruit, Leaf", guna: "Laghu, Snigdha", rasa: "Madhura, Katu, Tikta", virya: "Ushna", vipaka: "Madhura", prabhava: "Trishnahara", doshaghnata: "Tridoshara", karma: "Tridoshahara, Trishna-prashamana, Deepana", formulations: "Dhanyapanchaka Kwath", shloka: "धान्यकं तिक्तकमधुरं तृष्णादाहहरं परम्। दीपनं पाचनं हृद्यं सर्वदोषहरं लघु॥" },
+            { id: 31, name: "Dhataki", synonyms: "ताम्रपुष्पी, कुञ्जरा, सुभिक्षा, वह्निपुष्पी", botanical: "Woodfordia fruticosa Kurz", family: "Lythraceae", category: "MK", part: "Flower", guna: "Laghu, Ruksha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Sandhana / Fermentation", doshaghnata: "Kaphapittahara", karma: "Sandhananiya, Stambhana, Asava-sandhanakara", formulations: "Dhatakyadi Churna", shloka: "धातकी कटुका शीता तृष्णादाहातिसारहृत्। सन्धानीयो मता श्रेष्ठ आसवासवकारकः॥" },
+            { id: 32, name: "Dhattura", synonyms: "उन्मत्त, कितव, धूर्त, कनक, शम्भुप्रिय", botanical: "Datura metel L.", family: "Solanaceae", category: "MK", part: "Seed, Leaf", guna: "Laghu, Ruksha, Vyavayi", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Madakari", doshaghnata: "Kaphavatahara", karma: "Madakari, Shwasahara, Vedanasthapana", formulations: "Kanakasava, Dhattura Taila", shloka: "धत्तूरः मदकृद्वर्ण्यो जूकाज्वरकफापहः। उष्णी गुरुश्च कटुको विषकण्डूविनाशनः॥" },
+            { id: 33, name: "Ela", synonyms: "त्रिपुटा, त्रुटि, द्राविडी, निष्कुटि", botanical: "Elettaria cardamomum Maton", family: "Zingiberaceae", category: "MK", part: "Seed", guna: "Laghu, Ruksha", rasa: "Katu, Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Mukhadoshahara", doshaghnata: "Tridoshara", karma: "Mukhadoshahara, Anulomana, Chardighna", formulations: "Eladi Churna, Eladi Vati", shloka: "एला सुगन्धिः शीता च श्वासकासहारी मता। मुखदौर्गन्ध्यशमनी रोचनी कफवातहृत्॥" },
+            { id: 34, name: "Eranda", synonyms: "गन्धर्वहस्त, वातारि, पञ्चाङ्गुल, चञ्चु", botanical: "Ricinus communis L.", family: "Euphorbiaceae", category: "MK", part: "Root, Seed Oil", guna: "Snigdha, Tikshna, Sukshma", rasa: "Madhura, Katu, Kashaya", virya: "Ushna", vipaka: "Madhura", prabhava: "Vatahara / Virechana", doshaghnata: "Kaphavatahara", karma: "Vrishya, Vatahara, Virechana, Amavatahara", formulations: "Eranda Taila, Gandharvahastadi Kwath", shloka: "एरण्डमूलो वृष्यश्च वातघ्नः शिरोशूलहृत्। उष्णेन गुरुणा चैव वातश्लेष्मविनाशनः॥" },
+            { id: 35, name: "Gambhari", synonyms: "श्रीपर्णी, काश्मरी, भद्रा, सर्वतोभद्रिका", botanical: "Gmelina arborea Roxb.", family: "Lamiaceae", category: "MK", part: "Root, Fruit", guna: "Guru, Heavy", rasa: "Tikta, Kashaya, Madhura", virya: "Ushna", vipaka: "Madhura", prabhava: "Dahaprashamana", doshaghnata: "Tridoshara", karma: "Dahaprashamana, Rasayana, Dashamula ingredient", formulations: "Dashamularishta", shloka: "गम्भारी मधुरा शीता भ्रमदाहविनाशिनी। त्रिदोषघ्नी रसायनी शोथज्वरविनाशिनी॥" },
+            { id: 36, name: "Gokshura", synonyms: "त्रिकण्टक, स्वादुकण्टक, गोकण्ट, क्षुरक", botanical: "Tribulus terrestris L.", family: "Zygophyllaceae", category: "MK", part: "Fruit, Root", guna: "Guru, Snigdha", rasa: "Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Mootrala / Ashmarighna", doshaghnata: "Vatapittahara", karma: "Mootrala, Ashmarighna, Vrishya, Vatahara", formulations: "Gokshuradi Guggulu, Dashamularishta", shloka: "गोक्षुरः शीतलः स्वादुर्बलकृद्बस्तिशोधनः। मधुरो दीपनी वृष्यः पुष्टिदोऽश्मरीहरः॥" },
+            { id: 37, name: "Guduchi", synonyms: "अमृता, छिन्नरुहा, चक्राङ्गी, ज्वरनाशिनी", botanical: "Tinospora cordifolia Miers", family: "Menispermaceae", category: "MK", part: "Stem", guna: "Guru, Snigdha", rasa: "Tikta, Kashaya", virya: "Ushna", vipaka: "Madhura", prabhava: "Rasayana / Jwarahara", doshaghnata: "Tridoshara", karma: "Rasayana, Jwarahara, Vataraktahara, Dahahara", formulations: "Guduchi Satva, Amritarishta", shloka: "गुडूची कटुका तिक्ता स्वादुपाका रसायनी। संग्राहिणी कषायोष्णा दीपनी बलवर्धनी॥" },
+            { id: 38, name: "Guggulu", synonyms: "देवधूप, कौशिक, पुर, महिषाक्ष", botanical: "Commiphora mukul Bhandari", family: "Burseraceae", category: "MK", part: "Exudate", guna: "Laghu, Tikshna, Sukshma, Sara", rasa: "Tikta, Katu, Kashaya", virya: "Ushna", vipaka: "Katu", prabhava: "Medohara / Rasayana", doshaghnata: "Kaphavatahara", karma: "Vedanasthapana, Medohara, Rasayana, Sandhananiya", formulations: "Yogaraja Guggulu, Kaishora Guggulu", shloka: "गुग्गुलुर्वातमेदोघ्नः सुगन्धिः रसायनी। व्रणकासश्वासहरः श्लेष्मघ्नो बलवर्धनः॥" },
+            { id: 39, name: "Haridra", synonyms: "काञ्चनी, निशा, वरवर्णिनी, कृमिघ्नी, पीता", botanical: "Curcuma longa L.", family: "Zingiberaceae", category: "MK", part: "Rhizome", guna: "Ruksha, Laghu", rasa: "Tikta, Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Kushtaghna / Varnya", doshaghnata: "Kaphavatahara", karma: "Kushtaghna, Pramehahara, Varnya, Vishaghna", formulations: "Haridra Khanda, Nimbadi Churna", shloka: "हरिद्रा कटुका तिक्ता वर्ण्या कुष्ठविनाशिनी। प्रमेहकण्डूव्रणजिद्विशुद्धा कफवाताहृत्॥" },
+            { id: 40, name: "Haritaki", synonyms: "अभया, पथ्या, कायस्था, पूतना, शिवा", botanical: "Terminalia chebula Retz.", family: "Combretaceae", category: "MK", part: "Fruit Rind", guna: "Laghu, Ruksha", rasa: "Pancharasa (Lavanarahita)", virya: "Ushna", vipaka: "Madhura", prabhava: "Anulomana / Pathya", doshaghnata: "Tridoshara", karma: "Anulomana, Pathya, Rasayana, Tridoshara", formulations: "Triphala Churna, Abhayarishta", shloka: "हरीतकी पञ्चरसा लवणवर्जिता सिता। दीपना पाचनी मेध्या वयसः स्थापनी परा॥" },
+            { id: 41, name: "Hingu", synonyms: "सहस्रवेधि, रामठ, जतुक, बाह्लिक", botanical: "Ferula foetida Regel", family: "Apiaceae", category: "MK", part: "Oleo-gum resin", guna: "Laghu, Tikshna, Snigdha", rasa: "Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Anulomana", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Anulomana, Shoolahara", formulations: "Hingwashtaka Churna, Hingwadi Vati", shloka: "हिंगु उष्णं कटुकं पाके दीपनं पाचनं लघु। वातश्लेष्मह्रदविबन्धाध्मानशूलहृत्॥" },
+            { id: 42, name: "Jambu", synonyms: "महाफला, राजजम्बू, नीला, सुरभिपत्रा", botanical: "Syzygium cumini (L.) Skeels", family: "Myrtaceae", category: "MK", part: "Seed, Bark", guna: "Laghu, Ruksha", rasa: "Kashaya, Amla, Madhura", virya: "Sheeta", vipaka: "Katu", prabhava: "Pramehahara", doshaghnata: "Kaphapittahara", karma: "Pramehahara, Mutrasangrahaniya, Stambhana", formulations: "Jambwasava, Pushyanuga Churna", shloka: "जम्बूः सङ्ग्राहिणी शीता कफपित्तविनाशिनी। प्रमेहशमनी रूक्षा दाहातिसारनाशिनी॥" },
+            { id: 43, name: "Japa", synonyms: "जवा, रुद्रपुष्पी, ओड्रपुष्प, अरुणा", botanical: "Hibiscus rosa-sinensis L.", family: "Malvaceae", category: "MK", part: "Flower", guna: "Laghu, Snigdha", rasa: "Kashaya, Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Keshya", doshaghnata: "Kaphapittahara", karma: "Keshya, Artavajanana, Pittahara", formulations: "Japa Pushpa Churna, Japataila", shloka: "जपा संग्राहीणी शीता केश्या सोणितपित्तहृत्। सङ्ग्राहिणी लघुः स्वादुः कफपित्तविनाशिनी॥" },
+            { id: 44, name: "Jatamansi", synonyms: "भूतजटा, तपस्विनी, पिशिता, नलदा", botanical: "Nardostachys jatamansi DC.", family: "Caprifoliaceae", category: "MK", part: "Rhizome", guna: "Laghu, Snigdha", rasa: "Tikta, Kashaya, Madhura", virya: "Sheeta", vipaka: "Katu", prabhava: "Medhya / Nidrajanana", doshaghnata: "Tridoshara", karma: "Nidrajanana, Medhya, Hridya, Unmadahara", formulations: "Jatamansi Churna, Mamsyadi Kwath", shloka: "जटामंसी तिक्ता स्वादुः त्रिदोषहृत् सुशीतला। मेध्या कान्तिप्रदा हृद्या निद्राजननमुत्तमम्॥" },
+            { id: 45, name: "Jatiphala", synonyms: "जातीकोष, मालतीफल, मदशौण्ड", botanical: "Myristica fragrans Houtt.", family: "Myristicaceae", category: "MK", part: "Seed Nut", guna: "Laghu, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Mukharogahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Grahi, Mukharogahara", formulations: "Jatiphaladi Churna", shloka: "जातीफलं कटु तीक्ष्णं रोचनं कफवातहृत्। दीपनं ग्राहि सुगन्धि मुखदौर्गन्ध्यनाशनम्॥" },
+            { id: 46, name: "Jeeraka", synonyms: "अजाजी, जीर, कणा, जरण, दीर्घजीरक", botanical: "Cuminum cyminum L.", family: "Apiaceae", category: "DK", part: "Fruit", guna: "Laghu, Ruksha", rasa: "Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Grahi", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Ruchya, Grahi", formulations: "Jeerakadyarishta, Hingwashtaka", shloka: "जीरकं कटुकं पाके रुच्यं दीपनपाचनम्। चक्षुष्यं कटुकं ग्राहि वातश्लेष्मापहं लघु॥" },
+            { id: 47, name: "Jyotishmati", synonyms: "पारावतपदी, काकाण्डी, कटभी, मालकाङ्गुनी", botanical: "Celastrus paniculatus Willd.", family: "Celastraceae", category: "MK", part: "Seed", guna: "Tikshna, Sara", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Medhya", doshaghnata: "Kaphavatahara", karma: "Medhya, Shiro-virechana, Vatahara", formulations: "Jyotishmati Taila", shloka: "ज्योतिष्मती सरस्तीक्ष्णा मेध्या वातकफापहा। वह्निदीप्तिकरी तिक्ता शिरोविरेचनी मता॥" },
+            { id: 48, name: "Kalamegha", synonyms: "भूनिम्ब, यवातिक, किराततिक्तसदृश", botanical: "Andrographis paniculata Wall.", family: "Acanthaceae", category: "MK", part: "Whole Plant", guna: "Laghu, Ruksha", rasa: "Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Yakrit-uttejaka", doshaghnata: "Kaphapittahara", karma: "Yakrit-uttejaka, Jwarahara, Pittasarak", formulations: "Kalameghasava, Bhunimbadi Kwath", shloka: "कालमेघः तिक्तो यकृद्रोगविनाशनः। कामलापाण्डुशमनो दीपनः पाचनः परः॥" },
+            { id: 49, name: "Kampillaka", synonyms: "रेचनक, रक्तङ्ग, रोचनी, काम्पिल्ल", botanical: "Mallotus philippensis Müll.Arg.", family: "Euphorbiaceae", category: "MK", part: "Glandular Hairs", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Krimighna", doshaghnata: "Kaphavatahara", karma: "Krimighna, Rechana, Vibhandahara", formulations: "Kampillaka Churna", shloka: "कम्पिल्लकः कफघ्नश्च रेची क्रिमिनाशनः। गुल्मोदरव्रणहरः कटुरुष्णो लघुः स्मृतः॥" },
+            { id: 50, name: "Kanchanara", synonyms: "काञ्चनक, कोविदार, गण्डारि, युगपत्रक", botanical: "Bauhinia variegata L.", family: "Fabaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Gandamalahara", doshaghnata: "Kaphapittahara", karma: "Gandamalahara, Apachihara, Lekhana", formulations: "Kanchanara Guggulu", shloka: "काञ्चनारो हिमः ग्राही गण्डमालाविनाशनः। कषायः कटुकः पाके कफपित्तविनाशनः॥" },
+            { id: 51, name: "Kantakari", synonyms: "दुःस्पर्श, क्षुद्रा, व्याघ्री, निदिग्धिका", botanical: "Solanum surattense Burm.f.", family: "Solanaceae", category: "MK", part: "Whole Plant", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Kasashwasahara", doshaghnata: "Kaphavatahara", karma: "Kasahara, Shwasahara, Kaphatahara", formulations: "Kantakari Avaleha, Dashamularishta", shloka: "कण्टकारी कटुस्तिक्ता कासश्वासहरा मता। दीपना पाचनी हृद्या कफवातविनाशिनी॥" },
+            { id: 52, name: "Kapikachhu", synonyms: "आत्मगुप्ता, मर्कटी, कण्डूरा, प्रावृषायणी", botanical: "Mucuna pruriens (L.) DC.", family: "Fabaceae", category: "MK", part: "Seed", guna: "Guru, Snigdha", rasa: "Madhura, Tikta", virya: "Ushna", vipaka: "Madhura", prabhava: "Vrishya", doshaghnata: "Vatahara", karma: "Vrishya, Vatahara, Balya", formulations: "Vanari Kalpa, Kapikachhu Churna", shloka: "कपिकच्छू स्वादुपाका वृष्या वातहरा परा। बल्या रसायनी स्निग्धा बृंहणी शुक्रला मता॥" },
+            { id: 53, name: "Karkatshrungi", synonyms: "कुलीरशृङ्गी, शृङ्गी, वक्रा, अजशृङ्गी", botanical: "Pistacia integerrima Brandis", family: "Anacardiaceae", category: "MK", part: "Gall", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Kasahara", doshaghnata: "Kaphavatahara", karma: "Kasahara, Shwasahara, Kaphahara", formulations: "Balachaturbhadra Churna", shloka: "कर्कटशृङ्गी कषाय तिक्ता कासश्वासहरा। कफवातहरी हृद्या हिक्काज्वरविनाशिनी॥" },
+            { id: 54, name: "Katuki", synonyms: "तिक्ता, कटुकैधरा, मत्स्यशकला, काण्डरुहा", botanical: "Picrorhiza kurroa Royle", family: "Plantaginaceae", category: "MK", part: "Rhizome", guna: "Laghu, Ruksha", rasa: "Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Pittavirechana", doshaghnata: "Kaphapittahara", karma: "Bhedana, Pittavirechana, Jwarahara, Yakrit-dharaka", formulations: "Arogyavardhini Vati", shloka: "कटुकी तिक्ता हिमा भेदिनी पित्तज्वरा पहा। कफपित्तहरी रूक्षा दीपना विषकुष्ठहृत्॥" },
+            { id: 55, name: "Khadira", synonyms: "गायत्री, दन्तधावन, कण्टकी, बालपत्र", botanical: "Acacia catechu (L.f.) Willd.", family: "Fabaceae", category: "MK", part: "Heartwood Extract", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Kushtaghna (Best Drug)", doshaghnata: "Kaphapittahara", karma: "Kushtaghna, Raktashodhaka, Danta-mamsadardhyakara", formulations: "Khadirarishta, Khadiradi Vati", shloka: "खदिरः कुष्ठघ्नानाम् श्रेष्ठः कषायो हिमः स्मृतः। दन्त्यो रसाः सोणितहृत् कफपित्तविनाशनः॥" },
+            { id: 56, name: "Kulatha", synonyms: "कुलत्थिक, कालवृन्त, ताम्रबीज, अनर्थक", botanical: "Macrotyloma uniflorum Verdc.", family: "Fabaceae", category: "NK", part: "Seed", guna: "Laghu, Ruksha, Tikshna", rasa: "Kashaya, Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Ashmarighna", doshaghnata: "Kaphavatahara", karma: "Ashmarighna, Kaphavatahara, Bhedana", formulations: "Kulatthadi Kwath", shloka: "कुलत्थः कटुकः पाके अश्मरीहरः परम्। विबन्धघ्नः कफघ्नश्च श्वासकासानिलापहः॥" },
+            { id: 57, name: "Kumari", synonyms: "गृहकन्या, स्थालकमला, विपुलस्रावा, कन्या", botanical: "Aloe vera (L.) Burm.f.", family: "Asphodelaceae", category: "MK", part: "Leaf Pulp", guna: "Guru, Snigdha, Pichhila", rasa: "Tikta, Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Artavajanana / Bhedana", doshaghnata: "Tridoshara", karma: "Bhedana, Rasayana, Artavajanana, Vanya", formulations: "Kumariasava, Kumari Taila", shloka: "कुमारी भेदिनी शीता तिक्ता स्वादुश्च बृंहणी। बल्य वृष्या विषघ्नी च नेत्र्या यकृद्रोगापहा॥" },
+            { id: 58, name: "Kumkum", synonyms: "केसर, घुसृण, शोणित, असृक्, बाह्लीक", botanical: "Crocus sativus L.", family: "Iridaceae", category: "MK", part: "Stigma", guna: "Snigdha", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Varnya / Hridya", doshaghnata: "Tridoshara", karma: "Varnya, Tridoshara, Hridya, Shothahara", formulations: "Kumkumadi Taila", shloka: "कुङ्कुमं कटुकं तिक्तं वर्ण्य त्रिदोषहृत्। शिरोरुक्दाहशमनं हृद्यं कान्तिप्रदं परम्॥" },
+            { id: 59, name: "Kutaja", synonyms: "कलिङ्ग, शक्र, वत्सक, गिरिमल्लिका", botanical: "Holarrhena antidysenterica Wall.", family: "Apocynaceae", category: "MK", part: "Stem Bark, Seed", guna: "Laghu, Ruksha", rasa: "Tikta, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Atisaraghna", doshaghnata: "Kaphapittahara", karma: "Atisaraghna, Arshoghna, Deepana", formulations: "Kutajarishta, Kutajavaleha", shloka: "कुटजः कटुको तिक्तः अतीसारहरो हिमः। दीपनः कफपित्तघ्नः रक्तातिसारनाशनः॥" },
+            { id: 60, name: "Lajjalu", synonyms: "समङ्गा, नमस्करी, रक्तपदी, शामीपत्रा", botanical: "Mimosa pudica L.", family: "Fabaceae", category: "MK", part: "Root, Whole Plant", guna: "Laghu, Ruksha", rasa: "Tikta, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Raktastambhana", doshaghnata: "Kaphapittahara", karma: "Raktapittahara, Yonirogahara, Stambhana", formulations: "Lajjalu Swarasa", shloka: "लज्जालुः शीतला तिक्ता कषाया रक्तपित्तहृत्। सङ्ग्राहिणी कफघ्नी च योनिरोगविनाशिनी॥" },
+            { id: 61, name: "Latakaranja", synonyms: "करञ्जी, कुबेराक्षी, कण्टकी, पूतीक", botanical: "Caesalpinia bonduc (L.) Roxb.", family: "Fabaceae", category: "MK", part: "Seed Nut", guna: "Laghu, Ruksha", rasa: "Tikta, Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Vishamajwarahara", doshaghnata: "Kaphavatahara", karma: "Jwarahara, Vishamajwarahara, Vedanasthapana", formulations: "Latakaranjadi Churna", shloka: "लताकरञ्जः शूलघ्नो विषमज्वरनाशनः। दीपनः कटुकस्तिक्तो कफवातविनाशनः॥" },
+            { id: 62, name: "Lavanga", synonyms: "देवकुसुम, श्रीसञ्ज्ञ, देवपुष्प, वारिज", botanical: "Syzygium aromaticum Merr. & Perry", family: "Myrtaceae", category: "MK", part: "Flower Bud", guna: "Laghu, Snigdha", rasa: "Katu, Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Ruchya / Deepana", doshaghnata: "Kaphapittahara", karma: "Deepana, Pachana, Kanthya, Ruchya", formulations: "Lavangadi Vati, Avipattikar Churna", shloka: "लवङ्गं कटुकं तिक्तं रोचनं कफपित्तहृत्। चक्षुष्यं पाचनं हृद्यं तृष्णाछर्दिहरं लघु॥" },
+            { id: 63, name: "Lodhra", synonyms: "तिल्वक, शाबर, गाल्व, पटिकालोध्र", botanical: "Symplocos racemosa Roxb.", family: "Symplocaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Garbhasthapana / Stambhana", doshaghnata: "Kaphapittahara", karma: "Raktapittahara, Stambhana, Shothahara", formulations: "Lodhrasava, Pushyanuga Churna", shloka: "लोध्रः कषायो हिमवान् कफपित्तविनाशनः। चक्षुष्यो विशदो ग्राही शोषशोणितपित्तहृत्॥" },
+            { id: 64, name: "Madanaphala", synonyms: "राठ, पिण्डीतक, शल्यक, विषपुष्पक", botanical: "Catunaregam spinosa Tirveng.", family: "Rubiaceae", category: "MK", part: "Fruit", guna: "Laghu, Ruksha", rasa: "Madhura, Tikta, Katu, Kashaya", virya: "Ushna", vipaka: "Katu", prabhava: "Vamana (Best Emetic Drug)", doshaghnata: "Kaphavatahara", karma: "Vamana, Anulomana, Shothahara", formulations: "Madanaphala Churna", shloka: "मदनः श्रेष्ठतमं वमनेषु अनुलोमनम्। मधुरस्तिक्तकटुकः कफवाताणुकल्पकः॥" },
+            { id: 65, name: "Mandukaparni", synonyms: "मण्डूकी, त्वाष्ट्री, दिव्या, ब्राह्मीसदृशी", botanical: "Centella asiatica (L.) Urb.", family: "Apiaceae", category: "MK", part: "Whole Plant", guna: "Laghu, Sara", rasa: "Tikta", virya: "Sheeta", vipaka: "Madhura", prabhava: "Medhya Rasayana", doshaghnata: "Kaphapittahara", karma: "Medhya Rasayana, Varnya, Ayushya", formulations: "Mandukaparni Swarasa", shloka: "मण्डूकपर्णी मेध्या च आयुष्या विषनाशिनी। स्वादुपाका हिमा तिक्ता स्वरवर्णाग्निवर्धनी॥" },
+            { id: 66, name: "Manjishta", synonyms: "विकसा, योजनवल्ली, ताप्रमूला, भण्डी", botanical: "Rubia cordifolia L.", family: "Rubiaceae", category: "MK", part: "Root", guna: "Guru, Ruksha", rasa: "Tikta, Kashaya, Madhura", virya: "Ushna", vipaka: "Katu", prabhava: "Raktashodhaka", doshaghnata: "Kaphapittahara", karma: "Raktashodhaka, Varnya, Kushtaghna", formulations: "Manjishtadi Kwath, Pinda Taila", shloka: "मञ्जिष्ठा मधुरा तिक्ता कषाया स्वरवर्णकृत्। उष्णा कफविषघ्नी च रक्तातिसारनाशिनी॥" },
+            { id: 67, name: "Maricha", synonyms: "वेल्लज, कृष्ण, उषण, सुवृत्त", botanical: "Piper nigrum L.", family: "Piperaceae", category: "MK", part: "Fruit", guna: "Laghu, Tikshna", rasa: "Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Pramathi", doshaghnata: "Kaphavatahara", karma: "Deepana, Chedana, Kaphahara, Pramathi", formulations: "Trikatu Churna, Marichadi Taila", shloka: "मरिचं कटुकं तीक्ष्णमुष्णं कफवातहृत्। दीपनं श्वासकासघ्नं श्लेष्माणं शोषयेल्लघु॥" },
+            { id: 68, name: "Meshashrungi", synonyms: "अजशृङ्गी, मधुनाशिनी, बहुपत्री, छागल", botanical: "Gymnema sylvestre Schult.", family: "Apocynaceae", category: "MK", part: "Leaf, Root", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Madhumehahara", doshaghnata: "Kaphavatahara", karma: "Pramehahara, Madhumehahara, Deepana", formulations: "Meshashrungadi Churna", shloka: "मेषशृङ्गी तिक्ता दीपनी प्रमेहनाशिनी। चक्षुष्या तिक्तका पाके कफवातविनाशिनी॥" },
+            { id: 69, name: "Methika", synonyms: "कलम्बी, कुञ्चिका, बहुपत्री, मन्थिनो", botanical: "Trigonella foenum-graecum L.", family: "Fabaceae", category: "MK", part: "Seed", guna: "Laghu, Snigdha", rasa: "Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Deepana", doshaghnata: "Kaphavatahara", karma: "Deepana, Anulomana, Vatahara, Pramehahara", formulations: "Methika Churna, Methi Modaka", shloka: "मेथिका वातशमनी तिक्ता दीपनपाचनी। अरुचिनिर्हरणी हृद्या कफवातविनाशिनी॥" },
+            { id: 70, name: "Musta", synonyms: "वरिवाह, अभ्र, कुरुविन्द, गुन्द्रा", botanical: "Cyperus rotundus L.", family: "Cyperaceae", category: "MK", part: "Rhizome", guna: "Laghu, Ruksha", rasa: "Tikta, Katu, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Deepana-Pachana / Sangrahi", doshaghnata: "Kaphapittahara", karma: "Deepana, Pachana, Sangrahi, Jwarahara", formulations: "Mustarishta, Shadanga Paniya", shloka: "मुस्तं तिक्तं हिमं ग्राहि दीपनं पाचनं परम्। कफपित्तज्वरासृग्घ्नं तृष्णाछर्द्यतिसारहृत्॥" },
+            { id: 71, name: "Nagakeshara", synonyms: "नागपुष्प, केशर, चाम्पेय, हेमन", botanical: "Mesua ferrea L.", family: "Calophyllaceae", category: "MK", part: "Stamen", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Anushnasheeta", vipaka: "Katu", prabhava: "Raktastambhana", doshaghnata: "Kaphapittahara", karma: "Raktastambhana, Pachana, Dahaprashamana", formulations: "Nagakeshara Churna", shloka: "नागपुष्पं कषायोष्णं कफपित्तविनाशनम्। दीपनं पाचनं रुक्षमामदोषविनाशनम्॥" },
+            { id: 72, name: "Nimba", synonyms: "पिचुमर्द, तिक्तक, अरिष्ट, पारिभद्र", botanical: "Azadirachta indica A.Juss.", family: "Meliaceae", category: "MK", part: "Bark, Leaf, Seed", guna: "Laghu, Ruksha", rasa: "Tikta, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Kushtaghna / Vrana-shodhaka", doshaghnata: "Kaphapittahara", karma: "Kushtaghna, Kandughna, Krimighna, Vrana-shodhaka", formulations: "Nimbadi Churna, Nimbadi Kwath", shloka: "निम्बस्तिक्तो हिमो ग्राही लघुः पाके कटुः स्मृतः। आध्मानव्रणपित्तश्लेष्मकृमिष्ठिप्रणुत् सरः॥" },
+            { id: 73, name: "Nirgundi", synonyms: "सिन्दुवार, शेफालिका, नीलमञ्जरी, सुरसा", botanical: "Vitex negundo L.", family: "Lamiaceae", category: "MK", part: "Leaf", guna: "Laghu, Ruksha", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Vedanasthapana", doshaghnata: "Kaphavatahara", karma: "Vedanasthapana, Shothahara, Vata-Kaphahara", formulations: "Nirgundi Taila", shloka: "निर्गुण्डी कटुका तिक्ता चक्षुष्या वातहा लघुः। शोथश्लेष्महरा मेध्या कृमिशूलविनाशिनी॥" },
+            { id: 74, name: "Palasha", synonyms: "किंशुक, पर्ण, याज्ञिक, समिद्वर", botanical: "Butea monosperma Taub.", family: "Fabaceae", category: "MK", part: "Seed, Bark, Gum", guna: "Laghu, Ruksha", rasa: "Katu, Tikta, Kashaya", virya: "Ushna", vipaka: "Katu", prabhava: "Krimighna (Seed)", doshaghnata: "Kaphavatahara", karma: "Krimighna (Seed), Stambhana (Gum)", formulations: "Palashabeeja Churna", shloka: "पलाशो दीपनस्तिक्तो व्रणकृमिहरः स्मृतः। कषायः कटुको पाके सरः वातकफापहः॥" },
+            { id: 75, name: "Pashanabheda", synonyms: "अश्मभेद, पर्वतभेद, नगभेद, शिलाभेद", botanical: "Bergenia ligulata Engl.", family: "Saxifragaceae", category: "MK", part: "Rhizome", guna: "Laghu, Snigdha", rasa: "Tikta, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Ashmarighna", doshaghnata: "Tridoshara", karma: "Ashmarighna, Mootrala, Bhedana", formulations: "Pashanabhedadi Kwath", shloka: "पाषाणभेदो हिमो तिक्तः अश्मरीभेदनः सरः। मूत्रलः कफपित्तघ्नः शूलघ्नो बस्तिशोधनः॥" },
+            { id: 76, name: "Patha", synonyms: "अम्बष्ठा, एकष्ठीला, प्राचीना, पापचेलिका", botanical: "Cissampelos pareira L.", family: "Menispermaceae", category: "MK", part: "Root", guna: "Laghu, Tikshna", rasa: "Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Grahi / Atisaraghna", doshaghnata: "Kaphavatahara", karma: "Grahi, Deepana, Pachana, Atisaraghna", formulations: "Pathadi Kwath, Gangadhara Churna", shloka: "पाठा तिक्ता रसैः पाके कटुका विषनाशिनी। विषमज्वरशमनी दीपना पाचनी सरा॥" },
+            { id: 77, name: "Pippali", synonyms: "मागधी, वैदेही, कणा, कृष्णा, उपकुल्या", botanical: "Piper longum L.", family: "Piperaceae", category: "MK", part: "Fruit, Root", guna: "Laghu, Snigdha, Tikshna", rasa: "Katu", virya: "Anushnasheeta", vipaka: "Madhura", prabhava: "Rasayana / Kasahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Rasayana, Kasahara, Shwasahara", formulations: "Pippalyasava, Vardhamana Pippali", shloka: "पिप्पली स्वादुपाका च दीपना रसायनी मता। कटुरुष्णा स्निग्धलघ्वी वातश्लेष्महरा सरा॥" },
+            { id: 78, name: "Punarnava", synonyms: "शोथघ्नी, पुनर्भवा, वर्षाभू, विशाखा", botanical: "Boerhavia diffusa L.", family: "Nyctaginaceae", category: "MK", part: "Root, Whole Plant", guna: "Laghu, Ruksha", rasa: "Madhura, Tikta, Kashaya", virya: "Ushna", vipaka: "Madhura", prabhava: "Shothahara / Mootrala", doshaghnata: "Tridoshara", karma: "Shothahara, Mootrala, Anulomana", formulations: "Punarnavarishta, Punarnavadi Mandoor", shloka: "पुनर्नवा तिक्ता स्वादुः कषाया कटुका लघुः। स्वादुपाका हिमा वातला शोथकफपित्तहृत्॥" },
+            { id: 79, name: "Rasna", synonyms: "सुवहा, युक्तरसा, एलापर्णी, रसगन्धा", botanical: "Pluchea lanceolata Oliv. & Hiern", family: "Asteraceae", category: "MK", part: "Leaf, Root", guna: "Guru", rasa: "Tikta, Katu", virya: "Ushna", vipaka: "Katu", prabhava: "Amavatahara (Best Vatahara)", doshaghnata: "Kaphavatahara", karma: "Amavatahara, Vatahara, Vedanasthapana", formulations: "Rasnadi Kwath, Rasnasaptaka", shloka: "रास्ना तिक्ता गुरुरुष्णा वातशोथापहा सरा। आमवातामविषघ्नी कासश्वासज्वरापहा॥" },
+            { id: 80, name: "Rasona", synonyms: "लशुन, उग्रगन्ध, म्लेच्छकन्द, महाऔषध", botanical: "Allium sativum L.", family: "Amaryllidaceae", category: "MK", part: "Bulb", guna: "Snigdha, Tikshna, Pichhila, Guru", rasa: "Pancharasa (Amla Rahita)", virya: "Ushna", vipaka: "Katu", prabhava: "Rasayana / Vatahara", doshaghnata: "Kaphavatahara", karma: "Vatahara, Rasayana, Hridya, Vrishya", formulations: "Rasona Ksheerapaka, Lasunadi Vati", shloka: "रशोनो बृंहणो वृष्यो वातघ्नः स्निग्धमुष्णकः। दीपनः पाचनः सरः सर्वदोषहरः स्मृतः॥" },
+            { id: 81, name: "Sairayaka", synonyms: "झिण्टी, बाण, सहचर, कुरण्टक", botanical: "Barleria prionitis L.", family: "Acanthaceae", category: "MK", part: "Whole Plant", guna: "Laghu", rasa: "Tikta, Madhura", virya: "Ushna", vipaka: "Katu", prabhava: "Keshya", doshaghnata: "Kaphavatahara", karma: "Keshya, Kushtaghna, Vatahara", formulations: "Sairayakadi Kwath", shloka: "सैरीयकः सुगन्धिः स्यात् केश्या कुष्ठविनाशनः। तिक्तो मधुरकः पाके कफवातविनाशनः॥" },
+            { id: 82, name: "Sarpagandha", synonyms: "सर्पाक्षी, धवलविटप, नकुलेष्टा, सर्पसुता", botanical: "Rauvolfia serpentina Benth.", family: "Apocynaceae", category: "MK", part: "Root", guna: "Ruksha", rasa: "Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Nidrajanana / Raktachapahara", doshaghnata: "Kaphavatahara", karma: "Nidrajanana, Raktachapahara, Unmadahara", formulations: "Sarpagandha Ghanavati", shloka: "सर्पगन्धा तिक्ता रूक्षा निद्राजननी परम्। रक्तातिचापशमनी वातकफविनाशिनी॥" },
+            { id: 83, name: "Sariva", synonyms: "अनन्तमूला, गोपी, श्यामा, उत्पलसारिवा", botanical: "Hemidesmus indicus R.Br.", family: "Apocynaceae", category: "MK", part: "Root", guna: "Guru, Snigdha", rasa: "Madhura, Tikta", virya: "Sheeta", vipaka: "Madhura", prabhava: "Dahaprashamana", doshaghnata: "Tridoshara", karma: "Dahaprashamana, Raktashodhaka, Vishaghna", formulations: "Sarivadyasava, Sariva Churna", shloka: "सारिवा मधुरा तिक्ता दाहतृष्णाविषप्रणुत्। रक्तातिसारशमनी कफपित्तविनाशिनी॥" },
+            { id: 84, name: "Shallaki", synonyms: "गजभक्ष्या, सुवहा, नागवती, कुन्दुरु", botanical: "Boswellia serrata Roxb.", family: "Burseraceae", category: "MK", part: "Exudate (Resin)", guna: "Laghu, Ruksha", rasa: "Tikta, Katu, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Amavatahara / Purishasangrahaniya", doshaghnata: "Kaphapittahara", karma: "Purishasangrahaniya, Amavatahara, Vedanasthapana", formulations: "Shallaki Niryasa, Shallaki Vati", shloka: "शल्लकी तिक्ता मधुरा रसैः श्लेष्मातिसारहृत्। रक्तातिसारशमनी कषायोष्णा विनाशिनी॥" },
+            { id: 85, name: "Shalmali (Mocharasa)", synonyms: "मोचरस, तूलिनी, पिछिला, कुक्कुटी", botanical: "Bombax ceiba L.", family: "Malvaceae", category: "MK", part: "Gum, Bark", guna: "Snigdha, Pichhila", rasa: "Kashaya", virya: "Sheeta", vipaka: "Madhura", prabhava: "Stambhana", doshaghnata: "Pitta-Vatahara", karma: "Stambhana, Raktapittahara, Vrishya", formulations: "Mocharasa Churna, Pushyanuga", shloka: "मोचरसः कषायो हिमो ग्राही रक्तपित्तहृत्। वृष्यो वातप्रशमनः कफपित्तविनाशनः॥" },
+            { id: 86, name: "Shankhapushpi", synonyms: "शङ्खाह्वा, माङ्गल्यपुष्पी, क्षीरपुष्पी", botanical: "Convolvulus pluricaulis Choisy", family: "Convolvulaceae", category: "MK", part: "Whole Plant", guna: "Snigdha, Pichhila", rasa: "Tikta", virya: "Sheeta", vipaka: "Madhura", prabhava: "Medhya Rasayana (Best)", doshaghnata: "Tridoshara", karma: "Medhya Rasayana, Nidrajanana, Varnya", formulations: "Shankhapushpi Syrup, Shankhapushpi Ghrita", shloka: "शङ्खपुष्पी सरा मेध्या वशीकरणकारिणी। मेधाग्निबलवर्धिनी मानसरोगनाशिनी॥" },
+            { id: 87, name: "Shatavari", synonyms: "बहुसुता, भीरु, महाशतावरी, नारायणी", botanical: "Asparagus racemosus Willd.", family: "Asparagaceae", category: "MK", part: "Tuberous Root", guna: "Guru, Snigdha", rasa: "Madhura, Tikta", virya: "Sheeta", vipaka: "Madhura", prabhava: "Stanyajanana / Rasayana", doshaghnata: "Vatapittahara", karma: "Stanyajanana, Vrishya, Rasayana, Pittahara", formulations: "Shatavari Gulam, Shatavari Ghrita", shloka: "शतावरी गुरुः शीता तिक्ता स्वादुश्च रसायनी। बलस्तन्यकरी वृष्या शोषजिद्वातपित्तहृत्॥" },
+            { id: 88, name: "Shigru", synonyms: "शोभाञ्जन, तीक्ष्णगन्ध, अक्षिभुव, मूलक", botanical: "Moringa oleifera Lam.", family: "Moringaceae", category: "MK", part: "Bark, Seed, Leaf", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Shothahara", doshaghnata: "Kaphavatahara", karma: "Shothahara, Deepana, Krimighna, Vidradhihara", formulations: "Shigru Kwath, Shigru Taila", shloka: "शिग्रुः कटुरुष्णश्च दीपनः कफवातहृत्। चक्षुष्यः दीपनो हृद्यो व्रणघ्नो विषनाशनः॥" },
+            { id: 89, name: "Shunthi", synonyms: "नागर, विश्वभेषज, महाऔषध, श्रृङ्गवेर", botanical: "Zingiber officinale Roscoe", family: "Zingiberaceae", category: "MK", part: "Rhizome", guna: "Laghu, Snigdha", rasa: "Katu", virya: "Ushna", vipaka: "Madhura", prabhava: "Deepana / Amavatahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Vata-Kaphahara, Amavatahara", formulations: "Saubhagya Shunthi, Trikatu", shloka: "शुण्ठी कटुका स्वादुपाका वृष्या दीपनी मता। वातकफघ्नी हृद्या च रोचनी पाचिनी लघुः॥" },
+            { id: 90, name: "Talisapatra", synonyms: "पत्रकाढ्य, धात्रीपत्र, शुकपत्र, पत्राङ्ग", botanical: "Abies webbiana Lindl.", family: "Pinaceae", category: "NK", part: "Leaf", guna: "Laghu, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Kasashwasahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Kaphatahara, Kasahara, Shwasahara", formulations: "Talisadi Churna", shloka: "तालीसपत्रं कटुकं लघु कासकफापहम्। दीपनीयं श्वासहरं छर्दिहृद्रोगनाशनम्॥" },
+            { id: 91, name: "Trivrut", synonyms: "त्रिभण्डी, कुटो, सरला, रेचनी, श्यामा", botanical: "Operculina turpethum Silva Manso", family: "Convolvulaceae", category: "MK", part: "Root Bark", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Sukha Virechana (Best Easy Purgative)", doshaghnata: "Kaphavatahara", karma: "Sukha Virechana, Pittashodhaka", formulations: "Avipattikar Churna, Trivrut Lehya", shloka: "त्रिवृता सुखा विरेचनानां श्रेष्ठतमा मता। कटुका तिक्ता सरा रुक्षा कफपित्तविनाशिनी॥" },
+            { id: 92, name: "Tulasi", synonyms: "सुरसा, ग्राम्या, कायस्था, वैष्णवी, सुरभिस्रसा", botanical: "Ocimum sanctum L.", family: "Lamiaceae", category: "MK", part: "Leaf, Seed", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Vishaghna / Krimighna", doshaghnata: "Kaphavatahara", karma: "Krimighna, Shwasahara, Kasahara, Vishaghna", formulations: "Surasadi Kwath, Tulasi Swarasa", shloka: "तुलसी कटुका तिक्ता हृदयदाहविनाशिनी। दीपना कुष्ठकृमिघ्नी कफवातविनाशिनी॥" },
+            { id: 93, name: "Twak", synonyms: "दारुसिता, वराङ्ग, वल्क, भृङ्ग, स्वाद्वी", botanical: "Cinnamomum zeylanicum Blume", family: "Lauraceae", category: "MK", part: "Inner Bark", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta, Madhura", virya: "Ushna", vipaka: "Katu", prabhava: "Mukhadoshahara", doshaghnata: "Kaphavatahara", karma: "Mukhadoshahara, Deepana, Vata-Kaphahara", formulations: "Sitopaladi Churna, Twak Churna", shloka: "त्वक् स्वादु कटुकं पाके कफवातहरं लघु। दीपनं मुखवैशद्यकरं पित्तविनाशनम्॥" },
+            { id: 94, name: "Usheera", synonyms: "नलद, अमृणाल, वीरण, सेव्य, खस", botanical: "Vetiveria zizanioides Nash", family: "Poaceae", category: "MK", part: "Root", guna: "Laghu, Ruksha", rasa: "Tikta, Madhura", virya: "Sheeta", vipaka: "Katu", prabhava: "Dahaprashamana", doshaghnata: "Kaphapittahara", karma: "Dahaprashamana, Raktapittahara, Trishnahara", formulations: "Usheerasava, Shadanga Paniya", shloka: "उशीरं पाचनं शीतं दाहतृष्णाज्वरापहम्। कषायं तिक्तकं स्वादु कफपित्तविनाशनम्॥" },
+            { id: 95, name: "Vacha", synonyms: "उग्रगन्धा, षड्ग्रन्था, गोलमी, मङ्गल्या", botanical: "Acorus calamus L.", family: "Acoraceae", category: "MK", part: "Rhizome", guna: "Laghu, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Medhya / Lekhana", doshaghnata: "Kaphavatahara", karma: "Medhya, Lekhana, Shiro-virechana, Vamanopaga", formulations: "Saraswatarishta, Vachadi Churna", shloka: "वचा उग्रा कटुका तिक्ता मेध्या वमनकारिणी। उन्मादापस्मारशमनी कण्ठ्या स्वरकरी परा॥" },
+            { id: 96, name: "Varuna", synonyms: "वरुण, सेतु, तिक्त्तशाक, कुमारक", botanical: "Crateva nurvala Buch.-Ham.", family: "Capparaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Tikta, Kashaya", virya: "Ushna", vipaka: "Katu", prabhava: "Ashmarighna", doshaghnata: "Kaphavatahara", karma: "Ashmarighna, Vidradhihara, Deepana", formulations: "Varunadi Kwath, Varunadi Ghrita", shloka: "वरुणो वातशमनः अश्मरीभेदनः परम्। कषायो तिक्तको उष्णश्च दीपनः कफवातहृत्॥" },
+            { id: 97, name: "Vasa", synonyms: "वासक, सिंहस्य, वाजिदन्त, भीषङ्माता", botanical: "Adhatoda vasica Nees", family: "Acanthaceae", category: "MK", part: "Leaf", guna: "Laghu, Ruksha", rasa: "Tikta, Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Raktapittahara", doshaghnata: "Kaphapittahara", karma: "Raktapittahara, Kasahara, Shwasahara", formulations: "Vasarishta, Vasa Avaleha", shloka: "वासा तिक्ता हिमा स्वादुः पाके च कटुका लघुः। कासश्वासस्रपित्तघ्नी क्षयकुष्ठज्वरापहा॥" }
+        ];
+
+        let filteredData = [...drugsData];
+        let currentFlashcardIndex = 0;
+        let isCardFlipped = false;
+        let currentSortCol = 0;
+        let sortAsc = true;
+        let deferredPrompt = null;
+
+        window.onload = function () {
+            populateFamilyFilter();
+            renderTable();
+            updateFlashcard();
+            registerPWAServiceWorker();
+        };
+
+        // PWA Installation prompt event listener
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        function handleInstallClick() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        showToast("App installation started!");
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                openInstallModal();
+            }
+        }
+
+        function openInstallModal() {
+            const modal = document.getElementById('installModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeInstallModal() {
+            const modal = document.getElementById('installModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Inline Service Worker registration for offline functionality
+        function registerPWAServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                const swCode = `
+                    const CACHE_NAME = 'dravyaguna-v1';
+                    self.addEventListener('install', (e) => {
+                        e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(['./'])));
+                    });
+                    self.addEventListener('fetch', (e) => {
+                        e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+                    });
+                `;
+                const blob = new Blob([swCode], { type: 'text/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).catch(err => console.log('PWA ServiceWorker registration note:', err));
+            }
+        }
+
+        function openPrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closePrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-emerald-900', 'shadow');
+                btn.classList.add('text-emerald-100', 'hover:bg-emerald-700/50');
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-emerald-100', 'hover:bg-emerald-700/50');
+                activeBtn.classList.add('bg-white', 'text-emerald-900', 'shadow');
+            }
+        }
+
+        function populateFamilyFilter() {
+            const familySelect = document.getElementById('familyFilter');
+            if (!familySelect) return;
+
+            const families = [...new Set(drugsData.map(d => d.family ? d.family.split('/')[0].trim() : ''))].filter(Boolean).sort();
+            familySelect.innerHTML = '<option value="ALL">🌿 All Families</option>';
+            families.forEach(fam => {
+                const opt = document.createElement('option');
+                opt.value = fam;
+                opt.textContent = fam;
+                familySelect.appendChild(opt);
+            });
+        }
+
+        function getViryaBadge(viryaText) {
+            if (!viryaText) return '<span class="text-slate-400">-</span>';
+            const vLower = viryaText.toLowerCase();
+
+            if (vLower.includes('anushna')) {
+                return `<span class="px-2 py-0.5 text-[11px] font-semibold rounded-md bg-teal-100 text-teal-800 border border-teal-200 inline-flex items-center gap-1 shadow-sm" title="Anushnasheeta Virya">
+                            <i class="fa-solid fa-temperature-half text-teal-600"></i> ${viryaText}
+                        </span>`;
+            } else if (vLower.includes('ushna')) {
+                return `<span class="px-2 py-0.5 text-[11px] font-semibold rounded-md bg-orange-100 text-orange-900 border border-orange-200 inline-flex items-center gap-1 shadow-sm" title="Ushna Virya (Warm)">
+                            <i class="fa-solid fa-fire text-orange-600"></i> ${viryaText}
+                        </span>`;
+            } else if (vLower.includes('sheeta')) {
+                return `<span class="px-2 py-0.5 text-[11px] font-semibold rounded-md bg-sky-100 text-sky-900 border border-sky-200 inline-flex items-center gap-1 shadow-sm" title="Sheeta Virya (Cool)">
+                            <i class="fa-solid fa-snowflake text-sky-600"></i> ${viryaText}
+                        </span>`;
+            } else {
+                return `<span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-700 border border-slate-200 inline-block">${viryaText}</span>`;
+            }
+        }
+
+        function applyFilters() {
+            const search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+            const category = document.getElementById('categoryFilter')?.value || 'ALL';
+            const family = document.getElementById('familyFilter')?.value || 'ALL';
+            const rasa = document.getElementById('rasaFilter')?.value || 'ALL';
+            const guna = document.getElementById('gunaFilter')?.value || 'ALL';
+            const virya = document.getElementById('viryaFilter')?.value || 'ALL';
+            const karma = document.getElementById('karmaFilter')?.value || 'ALL';
+            const part = document.getElementById('partFilter')?.value || 'ALL';
+
+            filteredData = drugsData.filter(drug => {
+                const matchesSearch = drug.name.toLowerCase().includes(search) || 
+                                      (drug.synonyms && drug.synonyms.toLowerCase().includes(search)) ||
+                                      drug.botanical.toLowerCase().includes(search) ||
+                                      (drug.virya && drug.virya.toLowerCase().includes(search)) ||
+                                      (drug.shloka && drug.shloka.toLowerCase().includes(search)) ||
+                                      (drug.formulations && drug.formulations.toLowerCase().includes(search));
+                
+                const matchesCategory = (category === 'ALL') || (drug.category === category);
+                const matchesFamily = (family === 'ALL') || (drug.family && drug.family.includes(family));
+                const matchesRasa = (rasa === 'ALL') || (drug.rasa && drug.rasa.toLowerCase().includes(rasa.toLowerCase()));
+                const matchesGuna = (guna === 'ALL') || (drug.guna && drug.guna.toLowerCase().includes(guna.toLowerCase()));
+                const matchesVirya = (virya === 'ALL') || (drug.virya && drug.virya.toLowerCase().includes(virya.toLowerCase()));
+                const matchesKarma = (karma === 'ALL') || (drug.karma && drug.karma.toLowerCase().includes(karma.toLowerCase())) || (drug.prabhava && drug.prabhava.toLowerCase().includes(karma.toLowerCase()));
+                const matchesPart = (part === 'ALL') || (drug.part && drug.part.toLowerCase().includes(part.toLowerCase()));
+
+                return matchesSearch && matchesCategory && matchesFamily && matchesRasa && matchesGuna && matchesVirya && matchesKarma && matchesPart;
+            });
+
+            const showingEl = document.getElementById('showingCount');
+            if (showingEl) showingEl.textContent = filteredData.length;
+            renderTable();
+        }
+
+        function resetFilters() {
+            if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
+            if (document.getElementById('categoryFilter')) document.getElementById('categoryFilter').value = 'ALL';
+            if (document.getElementById('familyFilter')) document.getElementById('familyFilter').value = 'ALL';
+            if (document.getElementById('rasaFilter')) document.getElementById('rasaFilter').value = 'ALL';
+            if (document.getElementById('gunaFilter')) document.getElementById('gunaFilter').value = 'ALL';
+            if (document.getElementById('viryaFilter')) document.getElementById('viryaFilter').value = 'ALL';
+            if (document.getElementById('karmaFilter')) document.getElementById('karmaFilter').value = 'ALL';
+            if (document.getElementById('partFilter')) document.getElementById('partFilter').value = 'ALL';
+            applyFilters();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('drugsTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="17" class="text-center py-8 text-slate-400 italic">No drugs found matching your selected filters.</td></tr>`;
+                return;
+            }
+
+            filteredData.forEach((drug, index) => {
+                const tr = document.createElement('tr');
+                tr.className = index % 2 === 0 ? 'bg-white hover:bg-slate-50' : 'bg-slate-50/50 hover:bg-slate-100/60';
+
+                let categoryBadge = '';
+                if (drug.category === 'MK') {
+                    categoryBadge = `<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-emerald-100 text-emerald-800 border border-emerald-200">MK</span>`;
+                } else if (drug.category === 'DK') {
+                    categoryBadge = `<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-amber-100 text-amber-800 border border-amber-200">DK</span>`;
+                } else {
+                    categoryBadge = `<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-purple-100 text-purple-800 border border-purple-200">NK</span>`;
+                }
+
+                const viryaHighlighted = getViryaBadge(drug.virya);
+
+                tr.innerHTML = `
+                    <td class="p-2 text-center text-slate-400 font-mono text-[11px]">${drug.id}</td>
+                    <td class="p-2 font-bold text-slate-800">${drug.name}</td>
+                    <td class="p-2 text-amber-950 font-medium bg-amber-50/40 border-x border-amber-100 text-[11px]">${drug.synonyms || '-'}</td>
+                    <td class="p-2 text-emerald-800 italic font-medium">${drug.botanical}</td>
+                    <td class="p-2 text-slate-600 text-[11px]">${drug.family}</td>
+                    <td class="p-2 text-center">${categoryBadge}</td>
+                    <td class="p-2 text-slate-700">${drug.part}</td>
+                    <td class="p-2 text-slate-600">${drug.guna || '-'}</td>
+                    <td class="p-2 text-slate-700 font-medium">${drug.rasa || '-'}</td>
+                    <td class="p-2 font-medium">${viryaHighlighted}</td>
+                    <td class="p-2 text-slate-800 font-medium">${drug.vipaka || '-'}</td>
+                    <td class="p-2 text-slate-700">${drug.prabhava || '-'}</td>
+                    <td class="p-2 text-emerald-900 bg-emerald-50/40 font-medium text-[11px]">${drug.doshaghnata || '-'}</td>
+                    <td class="p-2 text-slate-700 text-[11px]">${drug.karma}</td>
+                    <td class="p-2 text-slate-800 font-medium text-[11px]">${drug.formulations}</td>
+                    <td class="p-2 text-amber-900 bg-amber-50/30 text-[11px] font-serif italic leading-relaxed">${drug.shloka || '-'}</td>
+                    <td class="p-2 text-center sticky right-0 bg-white shadow-l">
+                        <button onclick="openEditModal(${drug.id})" class="px-2 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded border border-emerald-200 transition text-[11px] font-medium flex items-center gap-1 mx-auto">
+                            <i class="fa-solid fa-pen"></i> Edit
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openEditModal(drugId) {
+            const drug = drugsData.find(d => d.id === drugId);
+            if (!drug) return;
+
+            document.getElementById('editDrugId').value = drug.id;
+            document.getElementById('editName').value = drug.name;
+            document.getElementById('editSynonyms').value = drug.synonyms || '';
+            document.getElementById('editBotanical').value = drug.botanical;
+            document.getElementById('editFamily').value = drug.family;
+            document.getElementById('editCategory').value = drug.category;
+            document.getElementById('editPart').value = drug.part;
+            document.getElementById('editGuna').value = drug.guna || '';
+            document.getElementById('editRasa').value = drug.rasa || '';
+            document.getElementById('editVirya').value = drug.virya || 'Ushna';
+            document.getElementById('editVipaka').value = drug.vipaka || '';
+            document.getElementById('editPrabhava').value = drug.prabhava || '';
+            document.getElementById('editDoshaghnata').value = drug.doshaghnata || '';
+            document.getElementById('editKarma').value = drug.karma;
+            document.getElementById('editFormulations').value = drug.formulations;
+            document.getElementById('editShloka').value = drug.shloka || '';
+
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+        }
+
+        function saveDrugEdits(e) {
+            e.preventDefault();
+            const id = parseInt(document.getElementById('editDrugId').value);
+            const index = drugsData.findIndex(d => d.id === id);
+
+            if (index !== -1) {
+                drugsData[index].name = document.getElementById('editName').value;
+                drugsData[index].synonyms = document.getElementById('editSynonyms').value;
+                drugsData[index].botanical = document.getElementById('editBotanical').value;
+                drugsData[index].family = document.getElementById('editFamily').value;
+                drugsData[index].category = document.getElementById('editCategory').value;
+                drugsData[index].part = document.getElementById('editPart').value;
+                drugsData[index].guna = document.getElementById('editGuna').value;
+                drugsData[index].rasa = document.getElementById('editRasa').value;
+                drugsData[index].virya = document.getElementById('editVirya').value;
+                drugsData[index].vipaka = document.getElementById('editVipaka').value;
+                drugsData[index].prabhava = document.getElementById('editPrabhava').value;
+                drugsData[index].doshaghnata = document.getElementById('editDoshaghnata').value;
+                drugsData[index].karma = document.getElementById('editKarma').value;
+                drugsData[index].formulations = document.getElementById('editFormulations').value;
+                drugsData[index].shloka = document.getElementById('editShloka').value;
+
+                populateFamilyFilter();
+                applyFilters();
+                updateFlashcard();
+                closeEditModal();
+                showToast("Updated " + drugsData[index].name + " successfully!");
+            }
+        }
+
+        function sortTable(colIndex) {
+            if (currentSortCol === colIndex) {
+                sortAsc = !sortAsc;
+            } else {
+                currentSortCol = colIndex;
+                sortAsc = true;
+            }
+
+            filteredData.sort((a, b) => {
+                let valA, valB;
+                switch(colIndex) {
+                    case 0: valA = a.id; valB = b.id; break;
+                    case 1: valA = a.name; valB = b.name; break;
+                    case 2: valA = a.botanical; valB = b.botanical; break;
+                    case 3: valA = a.family; valB = b.family; break;
+                    case 4: valA = a.category; valB = b.category; break;
+                    case 8: valA = a.virya || ''; valB = b.virya || ''; break;
+                    default: valA = a.id; valB = b.id;
+                }
+
+                if (valA < valB) return sortAsc ? -1 : 1;
+                if (valA > valB) return sortAsc ? 1 : -1;
+                return 0;
+            });
+
+            renderTable();
+        }
+
+        function copyForGoogleSheets() {
+            let tsv = "Sr No\tSanskrit Name\tParyaya Nama / Synonyms\tBotanical Name\tFamily\tCategory\tUseful Part\tGuna\tRasa\tVirya\tVipaka\tPrabhava\tDoshaghnata\tKarma / Indications\tMajor Formulations\tBhavprakasha Shloka\n";
+            
+            filteredData.forEach(d => {
+                tsv += `${d.id}\t${d.name}\t${d.synonyms || ''}\t${d.botanical}\t${d.family}\t${d.category}\t${d.part}\t${d.guna || ''}\t${d.rasa || ''}\t${d.virya || ''}\t${d.vipaka || ''}\t${d.prabhava || ''}\t${d.doshaghnata || ''}\t${d.karma}\t${d.formulations}\t${d.shloka || ''}\n`;
+            });
+
+            const textarea = document.createElement('textarea');
+            textarea.value = tsv;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast("Copied " + filteredData.length + " drugs formatted for Google Sheets!");
+        }
+
+        function downloadCSV() {
+            let csv = "Sr No,Sanskrit Name,Paryaya Nama / Synonyms,Botanical Name,Family,Category,Useful Part,Guna,Rasa,Virya,Vipaka,Prabhava,Doshaghnata,Karma,Formulations,Bhavprakasha Shloka\n";
+            
+            filteredData.forEach(d => {
+                csv += `"${d.id}","${d.name}","${d.synonyms || ''}","${d.botanical}","${d.family}","${d.category}","${d.part}","${d.guna || ''}","${d.rasa || ''}","${d.virya || ''}","${d.vipaka || ''}","${d.prabhava || ''}","${d.doshaghnata || ''}","${d.karma}","${d.formulations}","${d.shloka || ''}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'DRAVYAGUN_VIGYAN_97_DRUGS_Database.csv');
+            a.click();
+
+            showToast("Downloaded CSV File!");
+        }
+
+        function updateFlashcard() {
+            const drug = drugsData[currentFlashcardIndex];
+            if (!drug) return;
+
+            if (document.getElementById('cardCounter')) document.getElementById('cardCounter').textContent = `${currentFlashcardIndex + 1} / ${drugsData.length}`;
+            if (document.getElementById('fcNumber')) document.getElementById('fcNumber').textContent = `Drug #${drug.id}`;
+            if (document.getElementById('fcSanskritName')) document.getElementById('fcSanskritName').textContent = drug.name;
+            if (document.getElementById('fcSynonyms')) document.getElementById('fcSynonyms').textContent = `Synonyms: ${drug.synonyms || '-'}`;
+            if (document.getElementById('fcBotanicalName')) document.getElementById('fcBotanicalName').textContent = drug.botanical;
+            if (document.getElementById('fcFamily')) document.getElementById('fcFamily').textContent = `Family: ${drug.family}`;
+
+            if (document.getElementById('fcPart')) document.getElementById('fcPart').textContent = drug.part;
+            if (document.getElementById('fcRasa')) document.getElementById('fcRasa').textContent = drug.rasa || '-';
+            
+            const viryaBadge = getViryaBadge(drug.virya);
+            if (document.getElementById('fcViryaVipaka')) document.getElementById('fcViryaVipaka').innerHTML = `${viryaBadge} / ${drug.vipaka || '-'}`;
+            if (document.getElementById('fcGunaPrabhava')) document.getElementById('fcGunaPrabhava').textContent = `${drug.guna || '-'} • ${drug.prabhava || '-'}`;
+            if (document.getElementById('fcDoshaghnata')) document.getElementById('fcDoshaghnata').textContent = drug.doshaghnata || '-';
+            if (document.getElementById('fcShloka')) document.getElementById('fcShloka').textContent = drug.shloka || 'No verse provided.';
+
+            const categoryEl = document.getElementById('fcCategory');
+            if (categoryEl) {
+                categoryEl.textContent = drug.category === 'MK' ? 'Must Know (MK)' : (drug.category === 'DK' ? 'Desirable (DK)' : 'Nice to Know (NK)');
+            }
+
+            isCardFlipped = false;
+            if (document.getElementById('cardFront')) document.getElementById('cardFront').classList.remove('hidden');
+            if (document.getElementById('cardBack')) document.getElementById('cardBack').classList.add('hidden');
+        }
+
+        function toggleCardFlip() {
+            isCardFlipped = !isCardFlipped;
+            if (isCardFlipped) {
+                if (document.getElementById('cardFront')) document.getElementById('cardFront').classList.add('hidden');
+                if (document.getElementById('cardBack')) document.getElementById('cardBack').classList.remove('hidden');
+            } else {
+                if (document.getElementById('cardFront')) document.getElementById('cardFront').classList.remove('hidden');
+                if (document.getElementById('cardBack')) document.getElementById('cardBack').classList.add('hidden');
+            }
+        }
+
+        function prevFlashcard() {
+            currentFlashcardIndex = (currentFlashcardIndex - 1 + drugsData.length) % drugsData.length;
+            updateFlashcard();
+        }
+
+        function nextFlashcard() {
+            currentFlashcardIndex = (currentFlashcardIndex + 1) % drugsData.length;
+            updateFlashcard();
+        }
+
+        function randomFlashcard() {
+            currentFlashcardIndex = Math.floor(Math.random() * drugsData.length);
+            updateFlashcard();
+        }
+
+        function filterMishrakaGanas() {
+            const query = (document.getElementById('mishrakaSearchInput')?.value || '').toLowerCase();
+            const cards = document.querySelectorAll('.mishraka-card');
+
+            cards.forEach(card => {
+                const searchData = (card.getAttribute('data-search') || '').toLowerCase();
+                const textContent = card.textContent.toLowerCase();
+
+                if (searchData.includes(query) || textContent.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
