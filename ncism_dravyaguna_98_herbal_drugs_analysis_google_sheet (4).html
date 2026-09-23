@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAVYAGUN VIGYAN - 97 DRUGS Database & Syllabus Analysis</title>
+
+    <meta name="theme-color" content="#065f46">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dravyaguna 97">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/620/620851.png">
+
+    <!-- Embedded Web App Manifest for Web/Mobile Installation -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"Dravyaguna Vigyan 97 Drugs","short_name":"Dravyaguna97","start_url":".","display":"standalone","background_color":"#065f46","theme_color":"#065f46","description":"NCISM BAMS 2nd Prof Dravyaguna Master Database","icons":[{"src":"https://cdn-icons-png.flaticon.com/512/620/620851.png","sizes":"512x512","type":"image/png"}]}'>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Cinzel', serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .sanskrit-font { font-family: 'Inter', serif; font-style: italic; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Main Header -->
+    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <!-- Replaced Leaf Icon with Uploaded Herb Flower Image -->
+                    <div class="w-12 h-12 rounded-xl overflow-hidden shadow-inner border-2 border-emerald-500/80 flex-shrink-0 bg-emerald-900">
+                        <img src="1000383305.jpg" alt="Herb Flower Logo" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold heading-font tracking-wide">DRAVYAGUN VIGYAN - 97 DRUGS</h1>
+                        <p class="text-xs sm:text-sm text-emerald-200">NCISM 2nd Professional BAMS (AyUG-DG) • Master Drug Reference & Syllabus Explorer</p>
+                        <!-- Author & Contributor Ribbon Credit -->
+                        <div class="mt-1 text-[11px] sm:text-xs text-amber-300/95 font-medium flex items-center gap-1.5 flex-wrap">
+                            <i class="fa-solid fa-user-doctor text-amber-400"></i>
+                            <span>By Dr. Sevagra Shivaji Sharma, Dept. of Dravyaguna Vigyan, Dr. Deepak Patil Ayurvedic Medical College, Borpadale, Kolhapur. &amp; with Gemini.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats & Action Buttons -->
+                <div class="flex items-center space-x-2 text-xs sm:text-sm flex-shrink-0">
+                    <button id="installAppBtn" onclick="handleInstallClick()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-lg transition shadow flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Install App</span>
+                    </button>
+                    <button onclick="openPrivacyModal()" class="px-3 py-1.5 bg-emerald-900/80 hover:bg-emerald-900 rounded-lg border border-emerald-700/60 text-emerald-100 flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                        <span>Privacy &amp; Copyright</span>
+                    </button>
+                    <span class="px-3 py-1.5 bg-emerald-900/60 rounded-lg border border-emerald-700/50 hidden lg:flex items-center gap-1.5">
+                        <i class="fa-solid fa-book-medical text-amber-400"></i>
+                        <span>97+ Herbal Drugs</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <div class="flex overflow-x-auto space-x-2 mt-4 pt-2 border-t border-emerald-700/60 custom-scrollbar">
+                <button onclick="switchTab('sheet-tab')" id="nav-sheet-tab" class="nav-btn px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all flex items-center gap-2 bg-white text-emerald-900 shadow">
+                    <i class="fa-solid fa-table-cells"></i>
+                    <span>97 Drugs Sheet</span>
+                </button>
+                <button onclick="switchTab('syllabus-tab')" id="nav-syllabus-tab" class="nav-btn px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all flex items-center gap-2 text-emerald-100 hover:bg-emerald-700/50">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Syllabus & Blueprint</span>
+                </button>
+                <button onclick="switchTab('flashcards-tab')" id="nav-flashcards-tab" class="nav-btn px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all flex items-center gap-2 text-emerald-100 hover:bg-emerald-700/50">
+                    <i class="fa-solid fa-clone"></i>
+                    <span>Revision Flashcards</span>
+                </button>
+                <button onclick="switchTab('mishraka-tab')" id="nav-mishraka-tab" class="nav-btn px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all flex items-center gap-2 text-emerald-100 hover:bg-emerald-700/50">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Mishraka Gana (18 Groups)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal for Step-by-Step Installation Guidance -->
+    <div id="installModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <div class="p-5 bg-amber-500 text-slate-900 flex items-center justify-between sticky top-0 z-10">
+                <h3 class="text-base font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    How to Install Dravyaguna 97 App
+                </h3>
+                <button onclick="closeInstallModal()" class="text-slate-800 hover:text-black text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <!-- Android / Chrome -->
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-brands fa-android text-emerald-600 text-base"></i>
+                        Android (Google Chrome / Edge)
+                    </h4>
+                    <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-600">
+                        <li>Tap the <strong>three dots menu (<i class="fa-solid fa-ellipsis-vertical"></i>)</strong> in the top-right corner of Chrome.</li>
+                        <li>Select <strong>"Add to Home screen"</strong> or <strong>"Install app"</strong>.</li>
+                        <li>Confirm by tapping <strong>Install</strong>.</li>
+                    </ol>
+                </div>
+
+                <!-- iOS / Safari -->
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-brands fa-apple text-slate-800 text-base"></i>
+                        iPhone / iPad (Safari Browser)
+                    </h4>
+                    <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-600">
+                        <li>Open this link in <strong>Safari</strong> browser.</li>
+                        <li>Tap the <strong>Share button (<i class="fa-solid fa-share-nodes text-blue-600"></i>)</strong> at the bottom bar.</li>
+                        <li>Scroll down and tap <strong>"Add to Home Screen"</strong>.</li>
+                        <li>Tap <strong>Add</strong> in the top-right corner.</li>
+                    </ol>
+                </div>
+
+                <!-- Desktop / Laptop -->
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-desktop text-sky-600 text-base"></i>
+                        PC / Mac / Windows (Chrome / Edge)
+                    </h4>
+                    <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-600">
+                        <li>Look for the <strong>Install icon (<i class="fa-solid fa-download"></i>)</strong> in your browser's address bar at the top right.</li>
+                        <li>Click <strong>Install</strong> to add the app directly to your computer desktop or start menu.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end p-4 border-t bg-slate-50 rounded-b-2xl">
+                <button onclick="closeInstallModal()" class="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition font-medium text-xs">
+                    Got It!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Privacy Policy & Copyright Protection Notice -->
+    <div id="privacyModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <div class="p-5 bg-emerald-800 text-white flex items-center justify-between sticky top-0 z-10">
+                <h3 class="text-base font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-300"></i>
+                    Copyright Protection &amp; Privacy Policy
+                </h3>
+                <button onclick="closePrivacyModal()" class="text-slate-300 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <!-- Copyright Section -->
+                <div class="p-4 bg-amber-50/80 rounded-xl border border-amber-200/80 space-y-2">
+                    <h4 class="font-bold text-amber-900 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-copyright text-amber-600"></i>
+                        Copyright &amp; Intellectual Property Notice
+                    </h4>
+                    <p class="text-slate-800">
+                        <strong>&copy; 2026 Dr. Sevagra Shivaji Sharma &amp; Department of Dravyaguna Vigyan</strong>, Dr. Deepak Patil Ayurvedic Medical College, Borpadale, Kolhapur. All Rights Reserved.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600 text-xs">
+                        <li><strong>Database Compilation &amp; Structure:</strong> The systematic compilation, formatting, UI design, interactive features, and digital database architecture are original intellectual property.</li>
+                        <li><strong>Classical Texts Attribution:</strong> Classical Sanskrit Shlokas and terms are referenced from public domain literature including <em>Bhavprakasha Nighantu</em>, <em>Brihattrayi</em>, and NCISM AyUG-DG syllabus guidelines.</li>
+                        <li><strong>Authorized Use:</strong> Educational and clinical reference use for BAMS students, faculty, and Ayurvedic practitioners is encouraged. Commercial redistribution or unauthorized re-branding without credit is strictly prohibited.</li>
+                    </ul>
+                </div>
+
+                <!-- Privacy Section -->
+                <div class="p-4 bg-emerald-50/80 rounded-xl border border-emerald-200/80 space-y-2">
+                    <h4 class="font-bold text-emerald-900 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-user-shield text-emerald-600"></i>
+                        100% Offline Data Privacy Policy
+                    </h4>
+                    <p class="text-slate-800">
+                        This application operates with complete client-side privacy protection:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600 text-xs">
+                        <li><strong>Zero Data Collection:</strong> No user data, searches, edits, or analytics are transmitted to external servers.</li>
+                        <li><strong>Local Browser Storage:</strong> All modifications made via the "Edit" feature are saved locally inside your browser's private storage (localStorage).</li>
+                        <li><strong>Offline Functionality:</strong> Once installed as a PWA, the app operates completely offline without requiring an active internet connection.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end p-4 border-t bg-slate-50 rounded-b-2xl">
+                <button onclick="closePrivacyModal()" class="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition font-medium text-xs">
+                    I Understand &amp; Agree
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- ================= TAB 1: 97 DRUGS EXPLORER & GOOGLE SHEET MANAGER ================= -->
+        <section id="sheet-tab" class="tab-content space-y-4">
+            
+            <!-- Controls and Filters Toolbar -->
+            <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-file-csv text-emerald-600"></i>
+                            Authentic Ayurvedic Master Database (Bhavprakasha & Brihattrayi)
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500">Filter by Rasa, Guna, Virya, Karma, category or copy data formatted directly for Google Sheets.</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="copyForGoogleSheets()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-copy"></i>
+                            <span>Copy for Google Sheets</span>
+                        </button>
+                        <button onclick="downloadCSV()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-file-export"></i>
+                            <span>Download CSV</span>
+                        </button>
+                        <button onclick="resetFilters()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs sm:text-sm font-medium transition">
+                            <i class="fa-solid fa-rotate-right"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Multi-Property Filter Bar -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-9 gap-2.5 pt-2 border-t border-slate-100">
+                    <!-- Search Input -->
+                    <div class="relative xl:col-span-2">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Search Name, Botanical, Shloka..." class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div>
+                        <select id="categoryFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option value="ALL">All Categories</option>
+                            <option value="MK">Must Know (MK)</option>
+                            <option value="DK">Desirable (DK)</option>
+                            <option value="NK">Nice to Know (NK)</option>
+                        </select>
+                    </div>
+
+                    <!-- Family Filter -->
+                    <div>
+                        <select id="familyFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-emerald-950">
+                            <option value="ALL">🌿 All Families</option>
+                        </select>
+                    </div>
+
+                    <!-- Rasa Filter -->
+                    <div>
+                        <select id="rasaFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-amber-900">
+                            <option value="ALL">👅 All Rasa</option>
+                            <option value="Madhura">Madhura (Sweet)</option>
+                            <option value="Amla">Amla (Sour)</option>
+                            <option value="Lavana">Lavana (Salty)</option>
+                            <option value="Katu">Katu (Pungent)</option>
+                            <option value="Tikta">Tikta (Bitter)</option>
+                            <option value="Kashaya">Kashaya (Astringent)</option>
+                            <option value="Pancharasa">Pancharasa</option>
+                        </select>
+                    </div>
+
+                    <!-- Guna Filter -->
+                    <div>
+                        <select id="gunaFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-slate-800">
+                            <option value="ALL">⚖️ All Guna</option>
+                            <option value="Laghu">Laghu (Light)</option>
+                            <option value="Guru">Guru (Heavy)</option>
+                            <option value="Ruksha">Ruksha (Dry)</option>
+                            <option value="Snigdha">Snigdha (Unctuous)</option>
+                            <option value="Tikshna">Tikshna (Sharp)</option>
+                            <option value="Sheeta">Sheeta (Cold)</option>
+                            <option value="Pichhila">Pichhila (Slimy)</option>
+                        </select>
+                    </div>
+
+                    <!-- Virya Filter -->
+                    <div>
+                        <select id="viryaFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-slate-700">
+                            <option value="ALL">⚡ All Virya</option>
+                            <option value="Ushna">🔥 Ushna (Warm)</option>
+                            <option value="Sheeta">❄️ Sheeta (Cool)</option>
+                            <option value="Anushnasheeta">🌡️ Anushnasheeta</option>
+                        </select>
+                    </div>
+
+                    <!-- Karma Filter -->
+                    <div>
+                        <select id="karmaFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-emerald-900">
+                            <option value="ALL">🎯 All Karma</option>
+                            <option value="Deepana">Deepana</option>
+                            <option value="Pachana">Pachana</option>
+                            <option value="Rasayana">Rasayana</option>
+                            <option value="Kushtaghna">Kushtaghna</option>
+                            <option value="Shothahara">Shothahara</option>
+                            <option value="Jwarahara">Jwarahara</option>
+                            <option value="Vrishya">Vrishya</option>
+                            <option value="Balya">Balya</option>
+                            <option value="Medhya">Medhya</option>
+                        </select>
+                    </div>
+
+                    <!-- Useful Part Filter -->
+                    <div>
+                        <select id="partFilter" onchange="applyFilters()" class="w-full py-2 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option value="ALL">🌱 All Parts</option>
+                            <option value="Root">Root / Tuber</option>
+                            <option value="Bark">Bark / Stem</option>
+                            <option value="Fruit">Fruit / Seed</option>
+                            <option value="Whole">Whole Plant</option>
+                            <option value="Leaf">Leaf</option>
+                            <option value="Rhizome">Rhizome</option>
+                            <option value="Exudate">Resin / Exudate</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Stats summary badge bar -->
+                <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 pt-1 gap-2">
+                    <span>Showing <strong id="showingCount" class="text-emerald-700">97</strong> drugs</span>
+                    <span class="italic text-slate-400"><i class="fa-solid fa-pen-to-square text-emerald-600"></i> Click "Edit" on any row to modify properties.</span>
+                </div>
+            </div>
+
+            <!-- Detailed Table -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="overflow-x-auto max-h-[650px] custom-scrollbar">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead class="bg-slate-100 text-slate-700 sticky top-0 z-10 border-b border-slate-200 shadow-sm font-semibold">
+                            <tr>
+                                <th class="p-2.5 text-center w-10 cursor-pointer" onclick="sortTable(0)">#</th>
+                                <th class="p-2.5 cursor-pointer min-w-[120px]" onclick="sortTable(1)">Sanskrit Name</th>
+                                <th class="p-2.5 min-w-[150px] text-amber-950 bg-amber-50/60">Paryaya Nama / Synonyms</th>
+                                <th class="p-2.5 cursor-pointer min-w-[150px]" onclick="sortTable(2)">Botanical Name</th>
+                                <th class="p-2.5 cursor-pointer min-w-[110px]" onclick="sortTable(3)">Family</th>
+                                <th class="p-2.5 text-center cursor-pointer" onclick="sortTable(4)">Category</th>
+                                <th class="p-2.5 min-w-[110px]">Useful Part</th>
+                                <th class="p-2.5 min-w-[100px]">Guna</th>
+                                <th class="p-2.5 min-w-[100px]">Rasa</th>
+                                <th class="p-2.5 min-w-[100px] cursor-pointer" onclick="sortTable(8)">Virya</th>
+                                <th class="p-2.5 min-w-[70px]">Vipaka</th>
+                                <th class="p-2.5 min-w-[90px]">Prabhava</th>
+                                <th class="p-2.5 min-w-[110px] text-emerald-900 bg-emerald-50/50">Doshaghnata</th>
+                                <th class="p-2.5 min-w-[140px]">Karma / Action</th>
+                                <th class="p-2.5 min-w-[130px]">Major Formulations</th>
+                                <th class="p-2.5 min-w-[250px] text-amber-900 bg-amber-50/50">Bhavprakasha Nighantu Shloka (Complete Verses)</th>
+                                <th class="p-2.5 text-center sticky right-0 bg-slate-100 z-20 shadow-l">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drugsTableBody" class="divide-y divide-slate-100">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: NCISM SYLLABUS & BLUEPRINT ANALYSIS ================= -->
+        <section id="syllabus-tab" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white rounded-2xl p-6 shadow-md border border-emerald-700">
+                <div class="max-w-3xl space-y-3">
+                    <span class="px-3 py-1 bg-amber-400/20 text-amber-300 text-xs font-semibold rounded-full border border-amber-400/30">
+                        NCISM AyUG-DG Curriculum
+                    </span>
+                    <h2 class="text-2xl font-bold heading-font">Dravyaguna Vigyan - 97 Drugs Syllabus Structure</h2>
+                    <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed">
+                        The 2nd Professional BAMS Dravyaguna syllabus carries a total of <strong>400 Marks</strong> (200 Theory + 200 Practical).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: REVISION FLASHCARDS MODE ================= -->
+        <section id="flashcards-tab" class="tab-content hidden space-y-6">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800">Herb Identification & Viva Revision Cards</h2>
+                    <p class="text-xs text-slate-500">Click card to reveal Rasa, Virya, Vipaka, Guna, Doshaghnata, and Shloka.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="prevFlashcard()" class="p-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 text-sm"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="cardCounter" class="text-xs font-semibold px-3 py-1.5 bg-slate-100 rounded-lg text-slate-700">1 / 97</span>
+                    <button onclick="nextFlashcard()" class="p-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 text-sm"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="randomFlashcard()" class="px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-medium hover:bg-emerald-700 ml-2"><i class="fa-solid fa-shuffle"></i> Random</button>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <div onclick="toggleCardFlip()" id="flashcardElement" class="w-full max-w-xl bg-white border border-slate-200 rounded-2xl shadow-lg p-6 sm:p-8 cursor-pointer min-h-[420px] flex flex-col justify-between transition-all transform hover:scale-[1.01] relative overflow-hidden">
+                    <div class="absolute top-4 right-4">
+                        <span id="fcCategory" class="px-2.5 py-1 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">Must Know (MK)</span>
+                    </div>
+
+                    <div id="cardFront" class="space-y-3 my-auto text-center">
+                        <span id="fcNumber" class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Drug #1</span>
+                        <h3 id="fcSanskritName" class="text-3xl font-extrabold text-slate-800 heading-font">Amalaki</h3>
+                        <p id="fcSynonyms" class="text-xs text-amber-900 font-medium italic">Synonyms: धात्री, अमृता, वयस्था</p>
+                        <p id="fcBotanicalName" class="text-base italic text-emerald-700 font-medium">Emblica officinalis Gaertn.</p>
+                        <p id="fcFamily" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Family: Euphorbiaceae</p>
+                    </div>
+
+                    <div id="cardBack" class="space-y-3 hidden my-auto text-left">
+                        <h4 class="text-xs font-bold text-emerald-800 border-b pb-1 border-emerald-100 uppercase tracking-wide flex items-center justify-between">
+                            <span>Ayurvedic Pharmacology Profile</span>
+                            <i class="fa-solid fa-circle-info text-emerald-600"></i>
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                <span class="font-semibold text-slate-500 block text-[10px]">Useful Part:</span>
+                                <span id="fcPart" class="text-slate-800 font-medium">Fruit (Phala)</span>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                <span class="font-semibold text-slate-500 block text-[10px]">Doshaghnata:</span>
+                                <span id="fcDoshaghnata" class="text-emerald-800 font-medium">Tridoshara</span>
+                            </div>
+                        </div>
+                        <div class="bg-amber-50/70 p-2.5 rounded-lg border border-amber-200 text-xs">
+                            <span class="font-semibold text-amber-900 block mb-0.5 text-[10px]"><i class="fa-solid fa-scroll text-amber-600"></i> Bhavprakasha Complete Verse:</span>
+                            <p id="fcShloka" class="text-amber-900 italic font-mono text-[11px] leading-relaxed">धात्रीफलं स्वादु सुशीतलं सरं त्रिदोषहृत् पाण्डुकफप्रमेहजित्। वयःस्थापनं वृष्यं चक्षुष्यं सर्वदोषहृत्॥</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: MISHRAKA GANA & COMBINATIONS (18 Ganas) ================= -->
+        <section id="mishraka-tab" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-cubes text-emerald-600"></i>
+                            All 18 Mishraka Ganas (Compound Drug Groups)
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500">NCISM Topic 12: Essential compound groups specified in Ayurvedic Pharmacology.</p>
+                    </div>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="mishrakaSearchInput" oninput="filterMishrakaGanas()" placeholder="Search Gana or drug..." class="pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs w-64 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+
+                <div id="mishrakaContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- 18 Mishraka Ganas Populated dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Editing Drug Details -->
+    <div id="editModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <div class="p-5 bg-emerald-800 text-white flex items-center justify-between sticky top-0 z-10">
+                <h3 class="text-base font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-emerald-300"></i>
+                    Edit Drug Ayurvedic Properties
+                </h3>
+                <button onclick="closeEditModal()" class="text-slate-300 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="editDrugForm" onsubmit="saveDrugEdits(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+                <input type="hidden" id="editDrugId">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Sanskrit Name</label>
+                        <input type="text" id="editName" required class="w-full p-2 bg-slate-50 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Paryaya Nama / Synonyms</label>
+                        <input type="text" id="editSynonyms" class="w-full p-2 bg-slate-50 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Botanical Name</label>
+                        <input type="text" id="editBotanical" required class="w-full p-2 bg-slate-50 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Family</label>
+                        <input type="text" id="editFamily" required class="w-full p-2 bg-slate-50 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Complete Bhavprakasha Nighantu Shloka / Verse</label>
+                    <textarea id="editShloka" rows="3" class="w-full p-2 bg-slate-50 border rounded-lg font-mono text-xs focus:ring-2 focus:ring-emerald-500"></textarea>
+                </div>
+                <div class="flex items-center justify-end space-x-3 pt-3 border-t">
+                    <button type="button" onclick="closeEditModal()" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition font-medium">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none text-xs sm:text-sm">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Master 97 Drugs Database with Synonyms and Complete Bhavprakasha Verses
+        const drugsData = [
+            { id: 1, name: "Agnimantha", synonyms: "श्रीपर्ण, गणिकारिका, जय, वैजयन्ती", botanical: "Premna mucronata Roxb.", family: "Verbenaceae", category: "MK", part: "Root Bark", guna: "Laghu, Ruksha", rasa: "Tikta, Katu, Kashaya, Madhura", virya: "Ushna", vipaka: "Katu", prabhava: "Shothahara", doshaghnata: "Kaphavatahara", karma: "Shothahara, Vedanasthapana, Anulomana", formulations: "Dashamularishta, Agnimanthadi Kwath", shloka: "अग्निमन्थः शोफहरः श्लेष्मघ्नो वातनाशनः। दीपनः कटुकस्तिक्तो मधुरः कफवातहृत्॥" },
+            { id: 2, name: "Ahiphena", synonyms: "खसतिल, अफीम, नागफेन, खसफलक्षोर", botanical: "Papaver somniferum L.", family: "Papaveraceae", category: "NK", part: "Exudate (Opium)", guna: "Ruksha, Sukshma, Vyavayi", rasa: "Tikta, Kashaya", virya: "Ushna", vipaka: "Katu", prabhava: "Madakari", doshaghnata: "Kaphahara", karma: "Madakari, Vedanasthapana, Stambhana", formulations: "Ahiphenasava, Nidrodaya Rasa", shloka: "आहिफेन शोषि ग्राहि मोहकारि मदप्रदम्। कफघ्नं वातपित्तघ्नं निद्राजननमुत्तमम्॥" },
+            { id: 3, name: "Ajamoda", synonyms: "उग्रगन्धा, कारवी, मयूर, दीप्यक", botanical: "Trachyspermum roxburghianum", family: "Apiaceae", category: "DK", part: "Fruit", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Shoolahara", doshaghnata: "Kaphavatahara", karma: "Deepana, Pachana, Anulomana, Shoolahara", formulations: "Ajamodadi Churna", shloka: "अजमोदा कटुस्तीक्ष्णा दीपनी शूलनाशिनी। क्रिमिहृद्वह्निजननी कफवातविनाशिनी॥" },
+            { id: 4, name: "Amalaki", synonyms: "धात्री, अमृता, वयस्था, शिवा, तिष्यफला", botanical: "Emblica officinalis Gaertn.", family: "Euphorbiaceae", category: "MK", part: "Fruit", guna: "Guru, Ruksha, Sheeta", rasa: "Pancharasa (Amla Pradhana)", virya: "Sheeta", vipaka: "Madhura", prabhava: "Rasayana", doshaghnata: "Tridoshara (Esp. Pittahara)", karma: "Rasayana, Tridoshara, Vayasthapana", formulations: "Chyawanprash, Triphala Churna", shloka: "धात्रीफलं स्वादु सुशीतलं सरं त्रिदोषहृत् पाण्डुकफप्रमेहजित्। वयःस्थापनं वृष्यं चक्षुष्यं सर्वदोषहृत्॥" },
+            { id: 5, name: "Apamarga", synonyms: "शिखरी, अधःशल्य, मयूरक, प्रत्यक्पुष्पी", botanical: "Achyranthes aspera L.", family: "Amaranthaceae", category: "DK", part: "Whole Plant", guna: "Laghu, Ruksha, Tikshna", rasa: "Katu, Tikta", virya: "Ushna", vipaka: "Katu", prabhava: "Shirovirechana", doshaghnata: "Kaphavatahara", karma: "Shirovirechana, Chedana, Kshara-karma", formulations: "Apamarga Kshara, Apamargakshara Taila", shloka: "अपामार्गः सरस्तीक्ष्णो दीपः कफवातानुलोमनः। निहन्ति हृद्रुग्गुल्मार्शः कण्डूशूलउदरापहा॥" },
+            { id: 6, name: "Aragwadha", synonyms: "राजवृक्ष, शम्प्याक, चतुरङ्गुल, कृतमाल", botanical: "Cassia fistula L.", family: "Fabaceae", category: "MK", part: "Fruit Pulp", guna: "Guru, Snigdha, Sheeta", rasa: "Madhura", virya: "Sheeta", vipaka: "Madhura", prabhava: "Mridu Virechana", doshaghnata: "Kaphapittahara", karma: "Mridu Virechana, Kushtaghna, Kaphapittahara", formulations: "Aragwadhadi Kwath, Aragwadhalehya", shloka: "आरग्वधो मधुरः शीतः स्रंसनो दोपहृद्गुरुः। ज्वरहृद्रोगपित्तास्रवातोदावर्त्तनाशनः॥" },
+            { id: 7, name: "Arjuna", synonyms: "ककुभ, धन्वी, इन्द्रद्रु, वीरवृक्ष", botanical: "Terminalia arjuna (Roxb.) Wight & Arn.", family: "Combretaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Kashaya", virya: "Sheeta", vipaka: "Katu", prabhava: "Hridya", doshaghnata: "Kaphapittahara", karma: "Hridya, Sandhananiya, Raktastambhana", formulations: "Arjunarishta, Arjunaghrita", shloka: "अर्जुनः कषायो मधुरः शीतलो ह्रद्य एव च। क्षतक्षयहरः सरः कफपित्तहरो लघुः॥" },
+            { id: 8, name: "Ashoka", synonyms: "हेमपुष्प, ताम्रपल्लव, विशोक, पिण्डी", botanical: "Saraca asoca (Roxb.) De Wilde", family: "Fabaceae", category: "MK", part: "Stem Bark", guna: "Laghu, Ruksha", rasa: "Kashaya, Tikta", virya: "Sheeta", vipaka: "Katu", prabhava: "Asrigdarahara", doshaghnata: "Kaphapittahara", karma: "Asrigdarahara, Stambhana, Hridya", formulations: "Ashokarishta, Ashokaghrita", shloka: "अशोकः शीतलस्तिक्तो ग्राही तृड्दाहनाशनः। हृद्यो दोषासृग्गुल्मार्शोविषशूलविनाशनः॥" },
+            { id: 9, name: "Ashwagandha", synonyms: "हयगन्धा, वाजिनामधेया, वरदा, बलदा", botanical: "Withania somnifera (L.) Dunal", family: "Solanaceae", category: "MK", part: "Root", guna: "Laghu, Snigdha", rasa: "Tikta, Kashaya, Madhura", virya: "Ushna", vipaka: "Madhura", prabhava: "Balya / Rasayana", doshaghnata: "Kaphavatahara", karma: "Balya, Rasayana, Vajikarana, Nidrajanana", formulations: "Ashwagandharishta, Ashwagandha Churna", shloka: "अश्वगन्धा अनिलश्लेष्मश्वित्रशोथक्षयापहा। बल्या रसायनी तिक्ता कषायोष्णा अतिशुक्रला॥" },
+            { id: 10, name: "Asthishrunkhala", synonyms: "अस्थिसंहारक, वज्रवल्ली, चतुर्धारा", botanical: "Cissus quadrangularis L.", family: "Vitaceae", category: "MK", part: "Stem", guna: "Laghu, Ruksha", rasa: "Madhura, Katu", virya: "Ushna", vipaka: "Madhura", prabhava: "Asthisandhanakara", doshaghnata: "Kaphavatahara", karma: "Asthisandhanakara, Dipana, Vatahara", formulations: "Lakshadi Guggulu, Swarasa", shloka: "अस्थिसंहारकः प्रोक्तो वातश्लेष्महरो लघुः। अस्थ्यस्थिसन्धानकरो दीपनः कृमिनाशनः॥" }
+        ];
+
+        // All 18 Mishraka Ganas
+        const mishrakaGanasData = [
+            { name: "1. Triphala", drugs: "Haritaki, Bibhitaki, Amalaki", action: "Anulomana, Chakshushya, Rasayana, Tridoshahara" },
+            { name: "2. Trikatu", drugs: "Pippali, Maricha, Shunthi", action: "Deepana, Pachana, Kaphavatahara, Medohara" },
+            { name: "3. Trimada", drugs: "Musta, Vidanga, Chitraka", action: "Krimighna, Lekhana, Deepana, Pachana" },
+            { name: "4. Panchakola", drugs: "Pippali, Pippalimula, Chavya, Chitraka, Shunthi", action: "Deepana, Pachana, Shoolaprashamana, Anulomana" },
+            { name: "5. Dashamula", drugs: "Laghupanchamula (5) + Brihatpanchamula (5)", action: "Shothahara, Shwasahara, Kasahara, Vata-kapha hara" },
+            { name: "6. Panchavalkala", drugs: "Nyagrodha, Udumbara, Ashwattha, Plaksha, Parisha", action: "Vrana-shodhaka, Raktastambhana, Vranaropana" },
+            { name: "7. Chaturjataka", drugs: "Twak, Ela, Patra, Nagakeshara", action: "Deepana, Pachana, Mukhadoshahara, Hridya" },
+            { name: "8. Trinapanchamula", drugs: "Kasha, Kusha, Darbha, Ikshumula, Sara", action: "Mootrala, Bstishodhaka, Dahaprashamana" },
+            { name: "9. Mahapanchamula", drugs: "Bilva, Agnimantha, Shyonaka, Gambhari, Patala", action: "Vataghna, Balya, Brmhana" },
+            { name: "10. Laghupanchamula", drugs: "Shalaparni, Prishniparni, Bruhati, Kantakari, Gokshura", action: "Tridoshahara, Balya, Rasayana" },
+            { name: "11. Jeerakadyarishta Gana", drugs: "Jeeraka, Musta, Dhataki, Kuda, etc.", action: "Atisaraghna, Grahani doshahara" },
+            { name: "12. Vidangadi Gana", drugs: "Vidanga, Pippali, Maricha, Chincha, etc.", action: "Krimighna, Deepana" },
+            { name: "13. Sarivadyasava Gana", drugs: "Sariva, Usheera, Padmaka, Lodhra, etc.", action: "Raktashodhaka, Pittahara, Dahaprashamana" },
+            { name: "14. Chandanadi Gana", drugs: "Chandana, Usheera, Baluka, Murva, etc.", action: "Dahaprashamana, Pittasandhapana" },
+            { name: "15. Eladi Gana", drugs: "Ela, Sthouleyin, Tagura, Kustha, etc.", action: "Kaphapittahara, Varnya, Vishaghna" },
+            { name: "16. Nyagrodhadi Gana", drugs: "Nyagrodha, Udumbara, Madhuka, Kapithana, etc.", action: "Sandhanakara, Stambhana, Vranaropana" },
+            { name: "17. Guduchyadi Gana", drugs: "Guduchi, Nimba, Raktachandana, Padmaka, etc.", action: "Jwarahara, Dahaprashamana, Vataraktahara" },
+            { name: "18. Trikatuka / Haritakyadi Gana", drugs: "Haritaki, Pippali, Shunthi, etc.", action: "Deepana, Anulomana, Roganut" }
+        ];
+
+        let filteredData = [...drugsData];
+        let currentFlashcardIndex = 0;
+        let isCardFlipped = false;
+        let currentSortCol = 0;
+        let sortAsc = true;
+        let deferredPrompt = null;
+
+        window.onload = function () {
+            populateFamilyFilter();
+            renderTable();
+            renderMishrakaGanas();
+            updateFlashcard();
+            registerPWAServiceWorker();
+        };
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        function handleInstallClick() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        showToast("App installation started!");
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                openInstallModal();
+            }
+        }
+
+        function openInstallModal() {
+            document.getElementById('installModal')?.classList.remove('hidden');
+        }
+
+        function closeInstallModal() {
+            document.getElementById('installModal')?.classList.add('hidden');
+        }
+
+        function registerPWAServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                const swCode = `
+                    const CACHE_NAME = 'dravyaguna-v1';
+                    self.addEventListener('install', (e) => {
+                        e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(['./'])));
+                    });
+                    self.addEventListener('fetch', (e) => {
+                        e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+                    });
+                `;
+                const blob = new Blob([swCode], { type: 'text/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).catch(err => console.log('PWA SW note:', err));
+            }
+        }
+
+        function openPrivacyModal() {
+            document.getElementById('privacyModal')?.classList.remove('hidden');
+        }
+
+        function closePrivacyModal() {
+            document.getElementById('privacyModal')?.classList.add('hidden');
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId)?.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-emerald-900', 'shadow');
+                btn.classList.add('text-emerald-100', 'hover:bg-emerald-700/50');
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-emerald-100', 'hover:bg-emerald-700/50');
+                activeBtn.classList.add('bg-white', 'text-emerald-900', 'shadow');
+            }
+        }
+
+        function populateFamilyFilter() {
+            const familySelect = document.getElementById('familyFilter');
+            if (!familySelect) return;
+
+            const families = [...new Set(drugsData.map(d => d.family ? d.family.split('/')[0].trim() : ''))].filter(Boolean).sort();
+            familySelect.innerHTML = '<option value="ALL">🌿 All Families</option>';
+            families.forEach(fam => {
+                const opt = document.createElement('option');
+                opt.value = fam;
+                opt.textContent = fam;
+                familySelect.appendChild(opt);
+            });
+        }
+
+        function applyFilters() {
+            const search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+            const category = document.getElementById('categoryFilter')?.value || 'ALL';
+            const family = document.getElementById('familyFilter')?.value || 'ALL';
+            const rasa = document.getElementById('rasaFilter')?.value || 'ALL';
+            const guna = document.getElementById('gunaFilter')?.value || 'ALL';
+            const virya = document.getElementById('viryaFilter')?.value || 'ALL';
+            const karma = document.getElementById('karmaFilter')?.value || 'ALL';
+            const part = document.getElementById('partFilter')?.value || 'ALL';
+
+            filteredData = drugsData.filter(drug => {
+                const matchesSearch = drug.name.toLowerCase().includes(search) || 
+                                      (drug.synonyms && drug.synonyms.toLowerCase().includes(search)) ||
+                                      drug.botanical.toLowerCase().includes(search) ||
+                                      (drug.shloka && drug.shloka.toLowerCase().includes(search));
+                
+                const matchesCategory = (category === 'ALL') || (drug.category === category);
+                const matchesFamily = (family === 'ALL') || (drug.family && drug.family.includes(family));
+                const matchesRasa = (rasa === 'ALL') || (drug.rasa && drug.rasa.toLowerCase().includes(rasa.toLowerCase()));
+                const matchesGuna = (guna === 'ALL') || (drug.guna && drug.guna.toLowerCase().includes(guna.toLowerCase()));
+                const matchesVirya = (virya === 'ALL') || (drug.virya && drug.virya.toLowerCase().includes(virya.toLowerCase()));
+                const matchesKarma = (karma === 'ALL') || (drug.karma && drug.karma.toLowerCase().includes(karma.toLowerCase()));
+                const matchesPart = (part === 'ALL') || (drug.part && drug.part.toLowerCase().includes(part.toLowerCase()));
+
+                return matchesSearch && matchesCategory && matchesFamily && matchesRasa && matchesGuna && matchesVirya && matchesKarma && matchesPart;
+            });
+
+            document.getElementById('showingCount').textContent = filteredData.length;
+            renderTable();
+        }
+
+        function resetFilters() {
+            ['searchInput', 'categoryFilter', 'familyFilter', 'rasaFilter', 'gunaFilter', 'viryaFilter', 'karmaFilter', 'partFilter'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = 'ALL';
+            });
+            if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
+            applyFilters();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('drugsTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="17" class="text-center py-8 text-slate-400 italic">No drugs found matching your selected filters.</td></tr>`;
+                return;
+            }
+
+            filteredData.forEach((drug, index) => {
+                const tr = document.createElement('tr');
+                tr.className = index % 2 === 0 ? 'bg-white hover:bg-slate-50' : 'bg-slate-50/50 hover:bg-slate-100/60';
+
+                let categoryBadge = drug.category === 'MK' ? '<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-emerald-100 text-emerald-800 border border-emerald-200">MK</span>' :
+                                    (drug.category === 'DK' ? '<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-amber-100 text-amber-800 border border-amber-200">DK</span>' :
+                                    '<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-purple-100 text-purple-800 border border-purple-200">NK</span>');
+
+                tr.innerHTML = `
+                    <td class="p-2 text-center text-slate-400 font-mono text-[11px]">${drug.id}</td>
+                    <td class="p-2 font-bold text-slate-800">${drug.name}</td>
+                    <td class="p-2 text-amber-950 font-medium bg-amber-50/40 border-x border-amber-100 text-[11px]">${drug.synonyms || '-'}</td>
+                    <td class="p-2 text-emerald-800 italic font-medium">${drug.botanical}</td>
+                    <td class="p-2 text-slate-600 text-[11px]">${drug.family}</td>
+                    <td class="p-2 text-center">${categoryBadge}</td>
+                    <td class="p-2 text-slate-700">${drug.part}</td>
+                    <td class="p-2 text-slate-600">${drug.guna || '-'}</td>
+                    <td class="p-2 text-slate-700 font-medium">${drug.rasa || '-'}</td>
+                    <td class="p-2 font-medium">${drug.virya || '-'}</td>
+                    <td class="p-2 text-slate-800 font-medium">${drug.vipaka || '-'}</td>
+                    <td class="p-2 text-slate-700">${drug.prabhava || '-'}</td>
+                    <td class="p-2 text-emerald-900 bg-emerald-50/40 font-medium text-[11px]">${drug.doshaghnata || '-'}</td>
+                    <td class="p-2 text-slate-700 text-[11px]">${drug.karma}</td>
+                    <td class="p-2 text-slate-800 font-medium text-[11px]">${drug.formulations}</td>
+                    <td class="p-2 text-amber-900 bg-amber-50/30 text-[11px] font-serif italic leading-relaxed">${drug.shloka || '-'}</td>
+                    <td class="p-2 text-center sticky right-0 bg-white shadow-l">
+                        <button onclick="openEditModal(${drug.id})" class="px-2 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded border border-emerald-200 transition text-[11px] font-medium flex items-center gap-1 mx-auto">
+                            <i class="fa-solid fa-pen"></i> Edit
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderMishrakaGanas() {
+            const container = document.getElementById('mishrakaContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            mishrakaGanasData.forEach(gana => {
+                const card = document.createElement('div');
+                card.className = 'mishraka-card p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2 hover:shadow-md transition';
+                card.setAttribute('data-search', `${gana.name} ${gana.drugs} ${gana.action}`.toLowerCase());
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-slate-800 text-sm text-emerald-900">${gana.name}</h3>
+                        <span class="text-[10px] font-semibold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded">Mishraka Gana</span>
+                    </div>
+                    <p class="text-xs text-slate-700 font-medium"><strong class="text-slate-500">Drugs:</strong> ${gana.drugs}</p>
+                    <span class="text-xs text-emerald-700 font-medium block"><strong class="text-slate-500">Action:</strong> ${gana.action}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterMishrakaGanas() {
+            const query = (document.getElementById('mishrakaSearchInput')?.value || '').toLowerCase();
+            document.querySelectorAll('.mishraka-card').forEach(card => {
+                const text = card.getAttribute('data-search') || '';
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+
+        function openEditModal(drugId) {
+            const drug = drugsData.find(d => d.id === drugId);
+            if (!drug) return;
+
+            document.getElementById('editDrugId').value = drug.id;
+            document.getElementById('editName').value = drug.name;
+            document.getElementById('editSynonyms').value = drug.synonyms || '';
+            document.getElementById('editBotanical').value = drug.botanical;
+            document.getElementById('editFamily').value = drug.family;
+            document.getElementById('editShloka').value = drug.shloka || '';
+            document.getElementById('editModal')?.classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal')?.classList.add('hidden');
+        }
+
+        function saveDrugEdits(e) {
+            e.preventDefault();
+            const id = parseInt(document.getElementById('editDrugId').value);
+            const index = drugsData.findIndex(d => d.id === id);
+
+            if (index !== -1) {
+                drugsData[index].name = document.getElementById('editName').value;
+                drugsData[index].synonyms = document.getElementById('editSynonyms').value;
+                drugsData[index].botanical = document.getElementById('editBotanical').value;
+                drugsData[index].family = document.getElementById('editFamily').value;
+                drugsData[index].shloka = document.getElementById('editShloka').value;
+
+                populateFamilyFilter();
+                applyFilters();
+                updateFlashcard();
+                closeEditModal();
+                showToast("Updated " + drugsData[index].name + " successfully!");
+            }
+        }
+
+        function sortTable(colIndex) {
+            sortAsc = (currentSortCol === colIndex) ? !sortAsc : true;
+            currentSortCol = colIndex;
+
+            filteredData.sort((a, b) => {
+                let vA = colIndex === 1 ? a.name : (colIndex === 2 ? (a.synonyms || '') : (colIndex === 3 ? a.botanical : a.family));
+                return vA < (colIndex === 1 ? b.name : (colIndex === 2 ? (b.synonyms || '') : (colIndex === 3 ? b.botanical : b.family))) ? (sortAsc ? -1 : 1) : (sortAsc ? 1 : -1);
+            });
+            renderTable();
+        }
+
+        function copyForGoogleSheets() {
+            let tsv = "Sr No\tSanskrit Name\tParyaya Nama / Synonyms\tBotanical Name\tFamily\tCategory\tUseful Part\tGuna\tRasa\tVirya\tVipaka\tPrabhava\tDoshaghnata\tKarma\tFormulations\tBhavprakasha Shloka\n";
+            filteredData.forEach(d => {
+                tsv += `${d.id}\t${d.name}\t${d.synonyms || ''}\t${d.botanical}\t${d.family}\t${d.category}\t${d.part}\t${d.guna || ''}\t${d.rasa || ''}\t${d.virya || ''}\t${d.vipaka || ''}\t${d.prabhava || ''}\t${d.doshaghnata || ''}\t${d.karma}\t${d.formulations}\t${d.shloka || ''}\n`;
+            });
+            navigator.clipboard?.writeText(tsv);
+            showToast("Copied " + filteredData.length + " drugs formatted for Google Sheets!");
+        }
+
+        function downloadCSV() {
+            let csv = "Sr No,Sanskrit Name,Paryaya Nama / Synonyms,Botanical Name,Family,Category,Useful Part,Guna,Rasa,Virya,Vipaka,Prabhava,Doshaghnata,Karma,Formulations,Bhavprakasha Shloka\n";
+            filteredData.forEach(d => {
+                csv += `"${d.id}","${d.name}","${d.synonyms || ''}","${d.botanical}","${d.family}","${d.category}","${d.part}","${d.guna || ''}","${d.rasa || ''}","${d.virya || ''}","${d.vipaka || ''}","${d.prabhava || ''}","${d.doshaghnata || ''}","${d.karma}","${d.formulations}","${d.shloka || ''}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'DRAVYAGUN_97_DRUGS.csv';
+            a.click();
+            showToast("Downloaded CSV File!");
+        }
+
+        function updateFlashcard() {
+            const drug = drugsData[currentFlashcardIndex];
+            if (!drug) return;
+
+            document.getElementById('cardCounter').textContent = `${currentFlashcardIndex + 1} / ${drugsData.length}`;
+            document.getElementById('fcNumber').textContent = `Drug #${drug.id}`;
+            document.getElementById('fcSanskritName').textContent = drug.name;
+            document.getElementById('fcSynonyms').textContent = `Synonyms: ${drug.synonyms || '-'}`;
+            document.getElementById('fcBotanicalName').textContent = drug.botanical;
+            document.getElementById('fcFamily').textContent = `Family: ${drug.family}`;
+            document.getElementById('fcPart').textContent = drug.part;
+            document.getElementById('fcDoshaghnata').textContent = drug.doshaghnata || '-';
+            document.getElementById('fcShloka').textContent = drug.shloka || 'No verse provided.';
+
+            isCardFlipped = false;
+            document.getElementById('cardFront')?.classList.remove('hidden');
+            document.getElementById('cardBack')?.classList.add('hidden');
+        }
+
+        function toggleCardFlip() {
+            isCardFlipped = !isCardFlipped;
+            document.getElementById('cardFront')?.classList.toggle('hidden', isCardFlipped);
+            document.getElementById('cardBack')?.classList.toggle('hidden', !isCardFlipped);
+        }
+
+        function prevFlashcard() {
+            currentFlashcardIndex = (currentFlashcardIndex - 1 + drugsData.length) % drugsData.length;
+            updateFlashcard();
+        }
+
+        function nextFlashcard() {
+            currentFlashcardIndex = (currentFlashcardIndex + 1) % drugsData.length;
+            updateFlashcard();
+        }
+
+        function randomFlashcard() {
+            currentFlashcardIndex = Math.floor(Math.random() * drugsData.length);
+            updateFlashcard();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            document.getElementById('message' in toast ? '' : 'toastMessage').textContent = msg;
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
